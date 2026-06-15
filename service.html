@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing & Subscriptions — Stackly News</title>
+    <meta name="description" content="Unlock unrestricted access to premium journalism. Choose from our standard, premium, and institutional reading packages.">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.webp" type="image/webp">
+</head>
+<body>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close" id="close-search">&times;</button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" placeholder="Search stories, topics, reporters...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Press ESC to exit search menu</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <!-- Branding -->
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Stackly Logo">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav id="nav-menu">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="service.html" class="active">Services</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem;">Log In</a>
+                </div>
+            </nav>
+
+            <!-- Actions Controls -->
+            <div class="header-actions">
+                <button class="btn btn-icon" id="open-search" aria-label="Open Search"><i class="fas fa-search"></i></button>
+                <button class="btn btn-icon" id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- PRICING HERO -->
+    <main class="container">
+        <section class="service-hero" style="background-image: linear-gradient(rgba(8, 9, 15, 0.7), rgba(8, 9, 15, 0.95)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200');">
+            <div style="text-align: center; color: white; padding: 2rem;">
+                <h1 style="font-family: var(--font-heading); font-size: 3rem; font-weight: 800; margin-bottom: 0.5rem;">Access Premium Journalism</h1>
+                <p style="color: var(--primary); font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase;">Flexible Plans to Fuel Your Curiosity</p>
+            </div>
+        </section>
+
+        <!-- MONTHLY / YEARLY TOGGLE -->
+        <div class="pricing-toggle-container">
+            <span class="toggle-label">Monthly</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="billing-toggle">
+                <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-label">Yearly <span style="color: var(--primary); font-size: 0.8rem; font-weight: 700;">(Save 15%)</span></span>
+        </div>
+
+        <!-- PRICING CARDS -->
+        <section class="pricing-grid">
+            <!-- Free -->
+            <div class="pricing-card">
+                <div class="tier-name">Free Reader</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Basic access for casual readers</p>
+                <div class="tier-price">
+                    $<span>0</span>
+                    <p>forever free</p>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> 5 Premium Articles / month</li>
+                    <li><i class="fas fa-check"></i> Weekly Email Newsletter</li>
+                    <li><i class="fas fa-check"></i> Standard Loading Speed</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Ad-free Browsing Experience</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Archival Search (Post-2015)</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Dedicated Audio Narrations</li>
+                </ul>
+                <a href="login.html" class="btn btn-outline">Create Free Account</a>
+            </div>
+
+            <!-- Premium -->
+            <div class="pricing-card premium-tier">
+                <div class="pricing-badge">Recommended</div>
+                <div class="tier-name" style="color: var(--primary);">Premium Access</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Full access to independent reporting</p>
+                <div class="tier-price">
+                    $<span id="premium-price">9</span>
+                    <p>per month</p>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Unlimited Article Reading</li>
+                    <li><i class="fas fa-check"></i> Ad-Free Interface (Desktop & Mobile)</li>
+                    <li><i class="fas fa-check"></i> Weekly Investigative Dossier</li>
+                    <li><i class="fas fa-check"></i> Dedicated Audio Narrations</li>
+                    <li><i class="fas fa-check"></i> Core Archival access</li>
+                    <li class="disabled"><i class="fas fa-times"></i> Developer API Data Access</li>
+                </ul>
+                <a href="login.html" class="btn btn-primary">Go Premium Now</a>
+            </div>
+
+            <!-- Institutional/Enterprise -->
+            <div class="pricing-card">
+                <div class="tier-name">Enterprise Hub</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Tailored for teams and businesses</p>
+                <div class="tier-price">
+                    $<span id="enterprise-price">29</span>
+                    <p>per month</p>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Up to 15 Registered Seats</li>
+                    <li><i class="fas fa-check"></i> Automated Corporate Billing</li>
+                    <li><i class="fas fa-check"></i> RSS Syndicate integration API</li>
+                    <li><i class="fas fa-check"></i> Full Archival API queries</li>
+                    <li><i class="fas fa-check"></i> Ad-Free Interface</li>
+                    <li><i class="fas fa-check"></i> Dedicated Account Representative</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline">Contact Licensing Team</a>
+            </div>
+        </section>
+
+        <!-- EXTRA B2B SERVICES -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">Additional Capabilities</h2>
+            </div>
+            <div class="services-extra-grid">
+                <!-- Feature 1 -->
+                <div class="service-feature-box">
+                    <i class="fas fa-bullhorn"></i>
+                    <div>
+                        <h3>Advertising & Sponsorship</h3>
+                        <p>Promote your brand through interactive banner embeds, editorial sponsorships, and direct target promotions. Reach 10M+ tech-savvy executives monthly.</p>
+                        <a href="contact.html" style="color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-top: 0.5rem; display: inline-block;">Request Media Kit &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="service-feature-box">
+                    <i class="fas fa-code"></i>
+                    <div>
+                        <h3>Developer API Syndication</h3>
+                        <p>Query news summaries, category index histories, and real-time alerts. Integrate verified intelligence streams into your proprietary systems seamlessly.</p>
+                        <a href="404.html" style="color: var(--primary); font-size: 0.9rem; font-weight: 600; margin-top: 0.5rem; display: inline-block;">View API Documentation &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ ACCORDION -->
+        <section class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Can I cancel my subscription at any time?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-body">
+                    <p>Absolutely. You can cancel your subscription from your reader profile at any time with a single click. There are no cancellation fees, and your premium access will continue until the end of your billing cycle.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Do you offer special rates for students or academics?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-body">
+                    <p>Yes! We offer a 50% discount on the premium subscription for students, university faculty, and researchers. Please send a request via our Contact Hub using a valid institutional email (.edu, .ac.uk, etc.).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>How secure is the transaction processing?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-body">
+                    <p>Extremely secure. All payment data is processed using fully tokenized SSL systems, keeping bank details safely isolated from our storage. We support credit cards, PayPal, and Apple Pay.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Is ad-free reading available on mobile applications?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="accordion-body">
+                    <p>Yes. Once you upgrade your account to Premium, logging in on any device (phone browser, mobile app, desktop, tablet) will automatically remove all banner ads, trackers, and sponsored scripts.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <!-- Col 1 -->
+            <div>
+                <a href="index.html" class="footer-logo">
+                    <img src="images/logo.webp" alt="Stackly Logo">
+                </a>
+                <p class="footer-desc">A premium, forward-looking digital publication presenting data-driven updates and reporting at the speeds of tomorrow.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home Center</a></li>
+                    <li><a href="about.html">About Page</a></li>
+                    <li><a href="service.html">Services & Pricing</a></li>
+                    <li><a href="blog.html">Magazine Feed</a></li>
+                    <li><a href="contact.html">Contact Hub</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="blog.html?cat=technology">Technology</a></li>
+                    <li><a href="blog.html?cat=business">Business</a></li>
+                    <li><a href="blog.html?cat=politics">Politics</a></li>
+                    <li><a href="blog.html?cat=sports">Sports</a></li>
+                    <li><a href="blog.html?cat=lifestyle">Lifestyle</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4 -->
+            <div class="footer-col footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Register below for verified weekly briefings straight to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.75rem; border-radius: 50%; width: 45px; height: 45px; flex-shrink: 0;"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p class="copyright">&copy; 2026 Stackly News Network. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Service</a>
+                <a href="404.html">Cookie Controls</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>

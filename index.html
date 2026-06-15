@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly News — Global News, Delivered Instantly</title>
+    <meta name="description" content="Discover professional and unbiased reporting spanning technology, business, politics, lifestyle, and sports. Stay ahead with Stackly News.">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.webp" type="image/webp">
+</head>
+<body>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close" id="close-search">&times;</button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" placeholder="Search stories, topics, reporters...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Press ESC to exit search menu</p>
+        </div>
+    </div>
+
+    <!-- BREAKING NEWS TICKER -->
+    <div class="ticker-wrap">
+        <div class="ticker-title">Breaking News</div>
+        <div class="ticker">
+            <div class="ticker-item">Quantum Coherence achieved at room-temperature for extended duration.</div>
+            <div class="ticker-item">Market updates: Global indices correct amid regulatory revisions.</div>
+            <div class="ticker-item">Biophilic architectural blueprints approved for next-gen metropolitan towers.</div>
+            <div class="ticker-item">Championship Finals: Underdog claims stunning last-minute victory.</div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <!-- Branding -->
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Stackly Logo">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav id="nav-menu">
+                <div class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="service.html">Services</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem;">Log In</a>
+                </div>
+            </nav>
+
+            <!-- Actions Controls -->
+            <div class="header-actions">
+                <button class="btn btn-icon" id="open-search" aria-label="Open Search"><i class="fas fa-search"></i></button>
+                <button class="btn btn-icon" id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main class="container">
+        <section class="editorial-hero">
+            <!-- Main Story -->
+            <div class="hero-main" data-id="1">
+                <video class="hero-video" autoplay muted loop playsinline><source src="https://images.pexels.com/videos/2471249/free-video-2471249.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+                <div class="hero-overlay">
+                    <span class="category-tag">Technology</span>
+                    <h1 class="hero-title">The Rise of Artificial Intelligence in Modern Journalism</h1>
+                    <div class="hero-meta">
+                        <span><i class="far fa-user"></i> Elena Vance</span>
+                        <span><i class="far fa-calendar"></i> June 14, 2026</span>
+                        <span><i class="far fa-clock"></i> 5 Min Read</span>
+                    </div>
+                    <p class="hero-desc">Generative networks and automated scripting systems are revolutionizing modern media rooms. But can algorithms replicate the emotional intelligence and integrity of seasoned human investigative reporting?</p>
+                </div>
+            </div>
+
+            <!-- Sidebar Supporting Stories -->
+            <div class="hero-sidebar">
+                <div class="sidebar-card" data-id="2">
+                    <div>
+                        <span class="category-tag" style="border-color: #3b82f6; color: #3b82f6; background: rgba(59, 130, 246, 0.1);">Business</span>
+                        <h3 style="margin-top: 0.5rem;"><a href="javascript:void(0)">Markets Experience Volatility Amid Geopolitical Shifts</a></h3>
+                        <p>Global markets corrected sharply today as analysts caution long-term trade shifts, pushing commodities to record fluctuating ranges.</p>
+                    </div>
+                    <div class="hero-meta" style="margin-bottom: 0;">
+                        <span><i class="far fa-user"></i> Marcus Aurelius</span>
+                        <span><i class="far fa-clock"></i> 3 Min Read</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-card" data-id="3">
+                    <div>
+                        <span class="category-tag" style="border-color: #10b981; color: #10b981; background: rgba(16, 185, 129, 0.1);">Sports</span>
+                        <h3 style="margin-top: 0.5rem;"><a href="javascript:void(0)">Championship Finals: Underdog Claims the Historic Victory</a></h3>
+                        <p>In a heart-stopping finale, the underdog squad executed a tactical masterstroke to snatch the trophy in extra minutes.</p>
+                    </div>
+                    <div class="hero-meta" style="margin-bottom: 0;">
+                        <span><i class="far fa-user"></i> Sarah Jenkins</span>
+                        <span><i class="far fa-clock"></i> 4 Min Read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- TOP CATEGORIES -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Trending Categories</h2>
+            <a href="blog.html" class="btn btn-outline" style="padding: 0.4rem 1.2rem; font-size: 0.85rem;">View All</a>
+        </div>
+        <div class="category-layout">
+            <a href="blog.html?cat=politics" class="category-card">
+                <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&q=80&w=400&fm=webp" alt="Politics">
+                <div class="category-card-overlay"></div>
+                <div class="category-content">
+                    <i class="fa-solid fa-landmark"></i>
+                    <h3>Politics</h3>
+                </div>
+            </a>
+            <a href="blog.html?cat=sports" class="category-card">
+                <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=400&fm=webp" alt="Sports">
+                <div class="category-card-overlay"></div>
+                <div class="category-content">
+                    <i class="fa-solid fa-football"></i>
+                    <h3>Sports</h3>
+                </div>
+            </a>
+            <a href="blog.html?cat=technology" class="category-card">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400&fm=webp" alt="Technology">
+                <div class="category-card-overlay"></div>
+                <div class="category-content">
+                    <i class="fa-solid fa-microchip"></i>
+                    <h3>Technology</h3>
+                </div>
+            </a>
+            <a href="blog.html?cat=business" class="category-card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400&fm=webp" alt="Business">
+                <div class="category-card-overlay"></div>
+                <div class="category-content">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h3>Business</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- LATEST MAGAZINE STORIES -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Latest Editorial Insights</h2>
+            <a href="blog.html" class="btn btn-outline" style="padding: 0.4rem 1.2rem; font-size: 0.85rem;">Browse Feed</a>
+        </div>
+        <div class="news-grid">
+            <!-- Card 4 -->
+            <article class="article-card" data-id="4">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=600&fm=webp" alt="Quantum Computing">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem;">Technology</span>
+                    <h3 class="article-title">Next-Gen Quantum Computing: Reaching the Milestones</h3>
+                    <p class="article-text">Extendable room coherence metrics demonstrate commercial viability within the next decade, threatening classical encryption methods.</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Elena" class="author-avatar">
+                            Elena Vance
+                        </span>
+                        <span>June 11, 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="article-card" data-id="5">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=600&fm=webp" alt="Sustainable Buildings">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem; border-color: #eab308; color: #eab308; background: rgba(234, 179, 8, 0.1);">Lifestyle</span>
+                    <h3 class="article-title">Sustainable Architecture: Redefining Metropolitan Skyscrapers</h3>
+                    <p class="article-text">Biophilic skyscraper drafts are transforming concrete jungles into carbon sinks, incorporating vertical forests and integrated energy loops.</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="David" class="author-avatar">
+                            David Stone
+                        </span>
+                        <span>June 10, 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="article-card" data-id="6">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=600&fm=webp" alt="Grid Power">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem; border-color: #a855f7; color: #a855f7; background: rgba(168, 85, 247, 0.1);">Politics</span>
+                    <h3 class="article-title">The Shift in Global Energy: Transitioning to Clean Power Grid</h3>
+                    <p class="article-text">Major governments ratify grid modernization treaties to store solar and wind energy efficiently, mitigating international supply reliance.</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=100" alt="Marcus" class="author-avatar">
+                            Marcus Aurelius
+                        </span>
+                        <span>June 09, 2026</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- OPINIONS & COLUMNS SECTION -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Trending Thoughts & Opinions</h2>
+        </div>
+        <div class="opinion-grid">
+            <!-- Opinion 1 -->
+            <div class="opinion-card">
+                <p class="opinion-quote">"If journalism remains centered purely around speed-aggregation rather than investigative discovery, we risk losing our critical checks on power."</p>
+                <div class="opinion-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Elena" class="opinion-avatar">
+                    <div class="opinion-author-info">
+                        <h4>Elena Vance</h4>
+                        <p>Tech and Ethics Columnist</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opinion 2 -->
+            <div class="opinion-card">
+                <p class="opinion-quote">"Decentralized energy corridors represent the single most important infrastructure development of the modern decade."</p>
+                <div class="opinion-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="David" class="opinion-avatar">
+                    <div class="opinion-author-info">
+                        <h4>David Stone</h4>
+                        <p>Infrastructure Analyst</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opinion 3 -->
+            <div class="opinion-card">
+                <p class="opinion-quote">"Central banking systems must adapt immediately to crypto reserves, or witness the shift of geopolitical monetary control."</p>
+                <div class="opinion-author">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100" alt="Marcus" class="opinion-avatar">
+                    <div class="opinion-author-info">
+                        <h4>Marcus Aurelius</h4>
+                        <p>Senior Economics Editor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DOCUMENTARY PARALLAX SECTION -->
+    <section class="container">
+        <div class="doc-parallax">
+            <div class="doc-parallax-content">
+                <span class="category-tag" style="border-color: var(--secondary); color: var(--secondary); background: rgba(212, 175, 55, 0.1);">Original Report</span>
+                <h3>Behind the Steel Vaults of Svalbard</h3>
+                <p>An inside look at the subterranean structures safeguarding biological diversity for future generations.</p>
+                <a href="404.html" class="btn btn-primary"><i class="fas fa-play"></i> Watch Documentary</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIO BRIEFINGS SECTION -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Daily Audio Briefings</h2>
+            <a href="404.html" class="btn btn-outline" style="padding: 0.4rem 1.2rem; font-size: 0.85rem;">View Playlist</a>
+        </div>
+        <div class="audio-briefings-grid">
+            <!-- Episode 1 -->
+            <div class="audio-card" onclick="alert('Playing Episode 142: GenAI Regulatory Frameworks (Simulation)')">
+                <div class="audio-art-wrap">
+                    <img src="https://images.unsplash.com/photo-1610116306796-6ebd3051c330?auto=format&fit=crop&q=80&w=200&fm=webp" alt="Podcast 1">
+                    <div class="audio-play-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="audio-details">
+                    <h3>Ep. 142: GenAI Regulations</h3>
+                    <p>
+                        <span>12 Min Listen</span>
+                        <span class="audio-wave">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Episode 2 -->
+            <div class="audio-card" onclick="alert('Playing Episode 141: Geopolitics & Energy Grids (Simulation)')">
+                <div class="audio-art-wrap">
+                    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=200&fm=webp" alt="Podcast 2">
+                    <div class="audio-play-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="audio-details">
+                    <h3>Ep. 141: Future of Energy</h3>
+                    <p>
+                        <span>18 Min Listen</span>
+                        <span class="audio-wave">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Episode 3 -->
+            <div class="audio-card" onclick="alert('Playing Episode 140: Quantum Cybersecurity (Simulation)')">
+                <div class="audio-art-wrap">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=200&fm=webp" alt="Podcast 3">
+                    <div class="audio-play-overlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="audio-details">
+                    <h3>Ep. 140: Quantum Threat</h3>
+                    <p>
+                        <span>10 Min Listen</span>
+                        <span class="audio-wave">
+                            <span></span><span></span><span></span><span></span>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEEKLY VIDEO DIGEST SECTION -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Weekly Video Reports</h2>
+            <a href="404.html" class="btn btn-outline" style="padding: 0.4rem 1.2rem; font-size: 0.85rem;">Browse Videos</a>
+        </div>
+        <div class="video-digest-grid">
+            <!-- Video 1 -->
+            <div class="video-digest-card" onclick="alert('Playing Video Report: Silicon Valley Talent Shifts (Simulation)')">
+                <div class="video-thumbnail-wrap">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=400&fm=webp" alt="Video 1">
+                    <span class="video-duration">04:15</span>
+                    <div class="video-play-mini"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="video-digest-body">
+                    <h3 class="video-digest-title">Silicon Valley Talent Shifts Outside the Hubs</h3>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-digest-card" onclick="alert('Playing Video Report: Inside the Smart City Infrastructure (Simulation)')">
+                <div class="video-thumbnail-wrap">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=400&fm=webp" alt="Video 2">
+                    <span class="video-duration">08:42</span>
+                    <div class="video-play-mini"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="video-digest-body">
+                    <h3 class="video-digest-title">How Carbon-Neutral Skyscraper Tech Operates</h3>
+                </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div class="video-digest-card" onclick="alert('Playing Video Report: The Bitcoin Mining Grid Challenges (Simulation)')">
+                <div class="video-thumbnail-wrap">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=400&fm=webp" alt="Video 3">
+                    <span class="video-duration">05:20</span>
+                    <div class="video-play-mini"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="video-digest-body">
+                    <h3 class="video-digest-title">Bitcoin Mining Grid Integrations: Green Power Shift</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE READER POLL SECTION -->
+    <section class="container">
+        <div class="poll-container">
+            <h3 class="poll-question">Do you believe room-temperature quantum computing will be commercialized by 2030?</h3>
+            <div class="poll-options">
+                <!-- Option A -->
+                <button class="poll-option-btn" data-percent="68">
+                    <span>Yes, within the next 5 years</span>
+                    <span class="poll-percent">68%</span>
+                    <span class="poll-bg-fill"></span>
+                </button>
+                <!-- Option B -->
+                <button class="poll-option-btn" data-percent="32">
+                    <span>No, it requires several decades</span>
+                    <span class="poll-percent">32%</span>
+                    <span class="poll-bg-fill"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDITOR'S LENS SECTION -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Editor's Lens — Photojournalism</h2>
+        </div>
+        <div class="lens-showcase">
+            <!-- Large Main Image -->
+            <div class="lens-card">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800&fm=webp" alt="Visual 1">
+                <div class="lens-overlay">
+                    <span class="lens-meta">Global Grid / Orbit</span>
+                    <h3 class="lens-title">Stretching Across the Digital Atmosphere</h3>
+                    <p class="lens-desc">Satellite photography captures data density corridors illuminating major metropolitan areas across Europe during peak traffic hours.</p>
+                </div>
+            </div>
+
+            <!-- Secondary Stack -->
+            <div class="lens-side-stack">
+                <!-- Stack Image 1 -->
+                <div class="lens-side-card">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=500&fm=webp" alt="Visual 2">
+                    <div class="lens-side-overlay">
+                        <span class="lens-meta">Urban biophilic / architecture</span>
+                        <h3 class="lens-title" style="font-size: 1.05rem; margin-bottom: 0.25rem; font-weight: 700; color: #ffffff;">Vertical Terraces</h3>
+                    </div>
+                </div>
+
+                <!-- Stack Image 2 -->
+                <div class="lens-side-card">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=500&fm=webp" alt="Visual 3">
+                    <div class="lens-side-overlay">
+                        <span class="lens-meta">Finance / market volatility</span>
+                        <h3 class="lens-title" style="font-size: 1.05rem; margin-bottom: 0.25rem; font-weight: 700; color: #ffffff;">The Global Exchanges</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WEATHER SECTION -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Global Weather & Briefings</h2>
+        </div>
+        <div class="weather-grid">
+            <!-- City 1 -->
+            <div class="weather-card">
+                <h3>New York</h3>
+                <div class="weather-icon"><i class="fas fa-sun"></i></div>
+                <div class="weather-temp">72°F</div>
+                <div class="weather-condition">Sunny</div>
+            </div>
+
+            <!-- City 2 -->
+            <div class="weather-card">
+                <h3>London</h3>
+                <div class="weather-icon"><i class="fas fa-cloud-showers-heavy"></i></div>
+                <div class="weather-temp">58°F</div>
+                <div class="weather-condition">Showers</div>
+            </div>
+
+            <!-- City 3 -->
+            <div class="weather-card">
+                <h3>Tokyo</h3>
+                <div class="weather-icon"><i class="fas fa-cloud"></i></div>
+                <div class="weather-temp">68°F</div>
+                <div class="weather-condition">Cloudy</div>
+            </div>
+
+            <!-- City 4 -->
+            <div class="weather-card">
+                <h3>Paris</h3>
+                <div class="weather-icon"><i class="fas fa-cloud-sun"></i></div>
+                <div class="weather-temp">64°F</div>
+                <div class="weather-condition">Partly Cloudy</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKET PULSE SECTION -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Market Pulse & Financial Indices</h2>
+            <span style="color: var(--text-muted); font-size: 0.85rem; font-weight: 500;"><i class="fas fa-clock"></i> Delayed 15m</span>
+        </div>
+        <div class="market-pulse-grid">
+            <!-- Index 1 -->
+            <div class="market-card up">
+                <div class="market-info">
+                    <h4>S&P 500 Index</h4>
+                    <span class="market-price">5,432.15</span>
+                </div>
+                <div class="market-change">
+                    <i class="fas fa-caret-up"></i>
+                    <span>+1.24%</span>
+                </div>
+            </div>
+
+            <!-- Index 2 -->
+            <div class="market-card up">
+                <div class="market-info">
+                    <h4>NASDAQ 100</h4>
+                    <span class="market-price">18,650.30</span>
+                </div>
+                <div class="market-change">
+                    <i class="fas fa-caret-up"></i>
+                    <span>+1.85%</span>
+                </div>
+            </div>
+
+            <!-- Index 3 -->
+            <div class="market-card down">
+                <div class="market-info">
+                    <h4>DOW JONES</h4>
+                    <span class="market-price">39,120.40</span>
+                </div>
+                <div class="market-change">
+                    <i class="fas fa-caret-down"></i>
+                    <span>-0.32%</span>
+                </div>
+            </div>
+
+            <!-- Index 4 -->
+            <div class="market-card up">
+                <div class="market-info">
+                    <h4>BITCOIN (BTC)</h4>
+                    <span class="market-price">$68,410.00</span>
+                </div>
+                <div class="market-change">
+                    <i class="fas fa-caret-up"></i>
+                    <span>+4.20%</span>
+                </div>
+            </div>
+    </section>
+
+    <!-- BUSINESS WIRE / PRESS RELEASES SECTION -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Corporate Wire & Syndicates</h2>
+            <a href="404.html" class="btn btn-outline" style="padding: 0.4rem 1.2rem; font-size: 0.85rem;">Submit Release</a>
+        </div>
+        <div class="wire-list">
+            <!-- Wire Item 1 -->
+            <div class="wire-item" onclick="alert('Wire: QuantumCorp secures Series B funding (Simulation)')">
+                <div class="wire-meta">
+                    <span class="wire-time">10 Min Ago</span>
+                    <span class="wire-source">QuantumCorp</span>
+                </div>
+                <div class="wire-title">QuantumCorp announces $150M Series B to deploy commercial hardware by 2028.</div>
+                <i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.8rem;"></i>
+            </div>
+
+            <!-- Wire Item 2 -->
+            <div class="wire-item" onclick="alert('Wire: Biophilic Towers gets green building certificate (Simulation)')">
+                <div class="wire-meta">
+                    <span class="wire-time">1 Hour Ago</span>
+                    <span class="wire-source">GreenDrafts</span>
+                </div>
+                <div class="wire-title">Metropolitan planning boards grant ultimate biophilic green certificates to Biophilic Towers project.</div>
+                <i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.8rem;"></i>
+            </div>
+
+            <!-- Wire Item 3 -->
+            <div class="wire-item" onclick="alert('Wire: Apex Sports announces athletic apparel launch (Simulation)')">
+                <div class="wire-meta">
+                    <span class="wire-time">3 Hours Ago</span>
+                    <span class="wire-source">Apex Sports</span>
+                </div>
+                <div class="wire-title">Apex Sports unveils sustainable recycled fiber activewear line ahead of summer games.</div>
+                <i class="fas fa-chevron-right" style="color: var(--primary); font-size: 0.8rem;"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPOTLIGHT VIDEO PROMO SECTION -->
+    <section class="container">
+        <div class="spotlight-section">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200&fm=webp" alt="Spotlight background" class="spotlight-bg">
+            <div class="spotlight-overlay">
+                <div class="spotlight-content">
+                    <button class="play-btn" aria-label="Play video"><i class="fas fa-play"></i></button>
+                    <span class="category-tag" style="border-color: var(--accent); color: var(--accent); background: rgba(255, 0, 127, 0.15);">Spotlight Showcase</span>
+                    <h2>Behind the Scenes: Reporting from the Edge of Tomorrow</h2>
+                    <p>Accompany our investigative teams as they venture into remote deep research facilities, documenting groundbreaking science first-hand.</p>
+                    <a href="about.html" class="btn btn-primary">Learn About Our Vision</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CULTURE & REVIEWS SECTION -->
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">Culture & Review Corner</h2>
+            <a href="404.html" class="btn btn-outline" style="padding: 0.4rem 1.2rem; font-size: 0.85rem;">View Reviews</a>
+        </div>
+        <div class="culture-grid">
+            <!-- Review 1 -->
+            <div class="culture-card" onclick="alert('Culture Review: Contemporary Art Showcase (Simulation)')">
+                <div class="culture-cover-wrap">
+                    <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&q=80&w=300" alt="Art book cover">
+                </div>
+                <div class="culture-details">
+                    <span class="culture-score">9.4 / 10 &bull; Masterpiece</span>
+                    <h3 class="culture-title">The Art of the Virtual Atmosphere</h3>
+                    <p class="culture-review">An outstanding critique on how algorithms and digital renders are establishing themselves inside classical art galleries across major cities.</p>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="culture-card" onclick="alert('Culture Review: Biophilic Metropolises (Simulation)')">
+                <div class="culture-cover-wrap">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=300" alt="Urban design cover">
+                </div>
+                <div class="culture-details">
+                    <span class="culture-score">8.8 / 10 &bull; Essential</span>
+                    <h3 class="culture-title">Biophilic Cities of Tomorrow</h3>
+                    <p class="culture-review">An analytical deep dive examining biophilic skyscraper integration, explaining why biophilic city structures are vital to combat rising regional temperatures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTICLE DETAILS MODAL DRAWER -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="article-modal" id="article-modal">
+        <div class="modal-header">
+            <span class="category-tag" id="modal-category" style="margin-bottom: 0;">Story details</span>
+            <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img src="" alt="Article Banner" class="modal-article-img" id="modal-img">
+            <h2 class="modal-article-title" id="modal-title">Loading title...</h2>
+            <div class="modal-article-meta" id="modal-meta">Loading metadata...</div>
+            <div class="modal-article-content" id="modal-content">
+                Loading content...
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <!-- Col 1 -->
+            <div>
+                <a href="index.html" class="footer-logo">
+                    <img src="images/logo.webp" alt="Stackly Logo">
+                </a>
+                <p class="footer-desc">A premium, forward-looking digital publication presenting data-driven updates and reporting at the speeds of tomorrow.</p>
+                <div class="footer-socials">
+                    <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="404.html" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home Center</a></li>
+                    <li><a href="about.html">About Page</a></li>
+                    <li><a href="service.html">Services & Pricing</a></li>
+                    <li><a href="blog.html">Magazine Feed</a></li>
+                    <li><a href="contact.html">Contact Hub</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="blog.html?cat=technology">Technology</a></li>
+                    <li><a href="blog.html?cat=business">Business</a></li>
+                    <li><a href="blog.html?cat=politics">Politics</a></li>
+                    <li><a href="blog.html?cat=sports">Sports</a></li>
+                    <li><a href="blog.html?cat=lifestyle">Lifestyle</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4 -->
+            <div class="footer-col footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Register below for verified weekly briefings straight to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.75rem; border-radius: 50%; width: 45px; height: 45px; flex-shrink: 0;"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p class="copyright">&copy; 2026 Stackly News Network. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Service</a>
+                <a href="404.html">Cookie Controls</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazine Feed — Stackly News</title>
+    <meta name="description" content="Browse our complete collection of deep-dive articles, editorial essays, and investigative reporting across hot industries.">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.webp" type="image/webp">
+</head>
+<body>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close" id="close-search">&times;</button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" placeholder="Search stories, topics, reporters...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Press ESC to exit search menu</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <!-- Branding -->
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Stackly Logo">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav id="nav-menu">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="service.html">Services</a>
+                    <a href="blog.html" class="active">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem;">Log In</a>
+                </div>
+            </nav>
+
+            <!-- Actions Controls -->
+            <div class="header-actions">
+                <button class="btn btn-icon" id="open-search" aria-label="Open Search"><i class="fas fa-search"></i></button>
+                <button class="btn btn-icon" id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN FEED SECTION -->
+    <main class="container">
+        <!-- Feed Title -->
+        <div class="section-header" style="margin-bottom: 1.5rem;">
+            <h1 class="section-title" style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800;">Editorial Archive</h1>
+        </div>
+
+        <!-- Filters and Search Controls -->
+        <section class="blog-controls">
+            <!-- Category buttons -->
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">All Stories</button>
+                <button class="filter-btn" data-filter="technology">Technology</button>
+                <button class="filter-btn" data-filter="business">Business</button>
+                <button class="filter-btn" data-filter="politics">Politics</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+                <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+            </div>
+
+            <!-- Keyword Search -->
+            <div class="search-bar">
+                <input type="text" id="blog-search" placeholder="Type key terms to filter...">
+                <i class="fas fa-filter"></i>
+            </div>
+        </section>
+
+        <!-- Grid Cards (blog-feed class binds JS filtering) -->
+        <section class="news-grid blog-feed">
+            <!-- Article 1 -->
+            <article class="article-card" data-category="technology" data-id="1">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&q=80&w=600" alt="Artificial Intelligence">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem;">Technology</span>
+                    <h3 class="article-title">The Rise of Artificial Intelligence in Modern Journalism</h3>
+                    <p class="article-text">Generative networks and automated scripting systems are revolutionizing modern media rooms. But can algorithms replicate human investigative integrity?</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Elena" class="author-avatar">
+                            Elena Vance
+                        </span>
+                        <span>June 14, 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="article-card" data-category="business" data-id="2">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=600" alt="Market shifts">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem; border-color: #3b82f6; color: #3b82f6; background: rgba(59, 130, 246, 0.1);">Business</span>
+                    <h3 class="article-title">Markets Experience Volatility Amid Geopolitical Shifts</h3>
+                    <p class="article-text">Global markets corrected sharply today as analysts caution long-term trade shifts, pushing commodities to record fluctuating ranges.</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="Marcus" class="author-avatar">
+                            Marcus Aurelius
+                        </span>
+                        <span>June 13, 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="article-card" data-category="sports" data-id="3">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&q=80&w=600" alt="Soccer game">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem; border-color: #10b981; color: #10b981; background: rgba(16, 185, 129, 0.1);">Sports</span>
+                    <h3 class="article-title">Championship Finals: Underdog Claims the Historic Victory</h3>
+                    <p class="article-text">In a heart-stopping finale, the underdog squad executed a tactical masterstroke to snatch the trophy in extra minutes.</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100" alt="Sarah" class="author-avatar">
+                            Sarah Jenkins
+                        </span>
+                        <span>June 12, 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="article-card" data-category="technology" data-id="4">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=600" alt="Quantum Computing">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem;">Technology</span>
+                    <h3 class="article-title">Next-Gen Quantum Computing: Reaching the Milestones</h3>
+                    <p class="article-text">Extendable room coherence metrics demonstrate commercial viability within the next decade, threatening classical encryption methods.</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Elena" class="author-avatar">
+                            Elena Vance
+                        </span>
+                        <span>June 11, 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="article-card" data-category="lifestyle" data-id="5">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=600" alt="Sustainable Architecture">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem; border-color: #eab308; color: #eab308; background: rgba(234, 179, 8, 0.1);">Lifestyle</span>
+                    <h3 class="article-title">Sustainable Architecture: Redefining Metropolitan Skyscrapers</h3>
+                    <p class="article-text">Biophilic skyscraper drafts are transforming concrete jungles into carbon sinks, incorporating vertical forests and integrated energy loops.</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100" alt="David" class="author-avatar">
+                            David Stone
+                        </span>
+                        <span>June 10, 2026</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="article-card" data-category="politics" data-id="6">
+                <div class="article-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=600" alt="Grid Power">
+                </div>
+                <div class="article-body">
+                    <span class="category-tag" style="margin-bottom: 0.75rem; border-color: #a855f7; color: #a855f7; background: rgba(168, 85, 247, 0.1);">Politics</span>
+                    <h3 class="article-title">The Shift in Global Energy: Transitioning to Clean Power Grid</h3>
+                    <p class="article-text">Major governments ratify grid modernization treaties to store solar and wind energy efficiently, mitigating international supply reliance.</p>
+                    <div class="article-footer">
+                        <span class="article-author">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=100" alt="Marcus" class="author-avatar">
+                            Marcus Aurelius
+                        </span>
+                        <span>June 09, 2026</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- ARTICLE DETAILS DRAWER MODAL -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="article-modal" id="article-modal">
+        <div class="modal-header">
+            <span class="category-tag" id="modal-category" style="margin-bottom: 0;">Story details</span>
+            <button class="modal-close" id="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <img src="" alt="Article Banner" class="modal-article-img" id="modal-img">
+            <h2 class="modal-article-title" id="modal-title">Loading title...</h2>
+            <div class="modal-article-meta" id="modal-meta">Loading metadata...</div>
+            <div class="modal-article-content" id="modal-content">
+                Loading content...
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <!-- Col 1 -->
+            <div>
+                <a href="index.html" class="footer-logo">
+                    <img src="images/logo.webp" alt="Stackly Logo">
+                </a>
+                <p class="footer-desc">A premium, forward-looking digital publication presenting data-driven updates and reporting at the speeds of tomorrow.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home Center</a></li>
+                    <li><a href="about.html">About Page</a></li>
+                    <li><a href="service.html">Services & Pricing</a></li>
+                    <li><a href="blog.html">Magazine Feed</a></li>
+                    <li><a href="contact.html">Contact Hub</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="blog.html?cat=technology">Technology</a></li>
+                    <li><a href="blog.html?cat=business">Business</a></li>
+                    <li><a href="blog.html?cat=politics">Politics</a></li>
+                    <li><a href="blog.html?cat=sports">Sports</a></li>
+                    <li><a href="blog.html?cat=lifestyle">Lifestyle</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4 -->
+            <div class="footer-col footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Register below for verified weekly briefings straight to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.75rem; border-radius: 50%; width: 45px; height: 45px; flex-shrink: 0;"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p class="copyright">&copy; 2026 Stackly News Network. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Service</a>
+                <a href="404.html">Cookie Controls</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script>
+        // Check if there are category parameters in URL (e.g. ?cat=politics)
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const catParam = urlParams.get('cat');
+            if (catParam) {
+                const targetBtn = document.querySelector(`.filter-btn[data-filter="${catParam.toLowerCase()}"]`);
+                if (targetBtn) {
+                    targetBtn.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

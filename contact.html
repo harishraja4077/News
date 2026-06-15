@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — Stackly News</title>
+    <meta name="description" content="Get in touch with the Stackly News editorial newsroom, pitch investigative stories, or contact our commercial ad team.">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.webp" type="image/webp">
+</head>
+<body>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close" id="close-search">&times;</button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" placeholder="Search stories, topics, reporters...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Press ESC to exit search menu</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <!-- Branding -->
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Stackly Logo">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav id="nav-menu">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="service.html">Services</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html" class="active">Contact</a>
+                    <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem;">Log In</a>
+                </div>
+            </nav>
+
+            <!-- Actions Controls -->
+            <div class="header-actions">
+                <button class="btn btn-icon" id="open-search" aria-label="Open Search"><i class="fas fa-search"></i></button>
+                <button class="btn btn-icon" id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTACT CONTAINER -->
+    <main class="container">
+        <!-- Section title -->
+        <div class="section-header">
+            <h1 class="section-title" style="font-family: var(--font-heading); font-size: 2.25rem; font-weight: 800;">Contact Our Newsroom</h1>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Left Info cards -->
+            <div class="contact-info-cards">
+                <!-- Info 1 -->
+                <div class="contact-info-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <div>
+                        <h3>Headquarters</h3>
+                        <p>128 Innovation Parkway, Suite 500<br>Silicon Alley, NY 10010</p>
+                    </div>
+                </div>
+
+                <!-- Info 2 -->
+                <div class="contact-info-card">
+                    <i class="fas fa-keyboard"></i>
+                    <div>
+                        <h3>Anonymously Pitch a Tip</h3>
+                        <p>Have files or tips? Connect securely:<br><a href="mailto:tips@stacklynews.com" style="color: var(--primary); font-weight: 500;">tips@stacklynews.com</a></p>
+                    </div>
+                </div>
+
+                <!-- Info 3 -->
+                <div class="contact-info-card">
+                    <i class="fas fa-ad"></i>
+                    <div>
+                        <h3>Sponsorship & Press</h3>
+                        <p>For ad placements, partnerships, or interview slots:<br><a href="mailto:press@stacklynews.com" style="color: var(--primary); font-weight: 500;">press@stacklynews.com</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Contact Form -->
+            <div class="contact-form-container">
+                <h2 class="form-title">Send a Direct Message</h2>
+                <form id="contact-form">
+                    <div class="form-group-row">
+                        <div class="form-group">
+                            <label for="form-name">Your Name *</label>
+                            <input type="text" id="form-name" class="form-control" placeholder="E.g. Jane Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Email Address *</label>
+                            <input type="email" id="form-email" class="form-control" placeholder="E.g. jane@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-subject">Subject Interest</label>
+                        <select id="form-subject" class="form-control">
+                            <option value="editorial">Editorial Pitch / Corrections</option>
+                            <option value="business">Commercial Advertising Slot</option>
+                            <option value="premium">Premium Subscriptions Inquiry</option>
+                            <option value="other">General Feedback</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="form-message">Detailed Message *</label>
+                        <textarea id="form-message" class="form-control" placeholder="Describe the details of your request..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.9rem;">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <!-- Col 1 -->
+            <div>
+                <a href="index.html" class="footer-logo">
+                    <img src="images/logo.webp" alt="Stackly Logo">
+                </a>
+                <p class="footer-desc">A premium, forward-looking digital publication presenting data-driven updates and reporting at the speeds of tomorrow.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home Center</a></li>
+                    <li><a href="about.html">About Page</a></li>
+                    <li><a href="service.html">Services & Pricing</a></li>
+                    <li><a href="blog.html">Magazine Feed</a></li>
+                    <li><a href="contact.html">Contact Hub</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="blog.html?cat=technology">Technology</a></li>
+                    <li><a href="blog.html?cat=business">Business</a></li>
+                    <li><a href="blog.html?cat=politics">Politics</a></li>
+                    <li><a href="blog.html?cat=sports">Sports</a></li>
+                    <li><a href="blog.html?cat=lifestyle">Lifestyle</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4 -->
+            <div class="footer-col footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Register below for verified weekly briefings straight to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.75rem; border-radius: 50%; width: 45px; height: 45px; flex-shrink: 0;"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p class="copyright">&copy; 2026 Stackly News Network. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Service</a>
+                <a href="404.html">Cookie Controls</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>

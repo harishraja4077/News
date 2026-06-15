@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found — Stackly News</title>
+    <meta name="description" content="The story or frequency you requested could not be located on the Stackly News server network.">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.webp" type="image/webp">
+</head>
+<body>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close" id="close-search">&times;</button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <input type="text" placeholder="Search stories, topics, reporters...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Press ESC to exit search menu</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-container">
+            <!-- Branding -->
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="Stackly Logo">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav id="nav-menu">
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="service.html">Services</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="login.html" class="btn btn-outline" style="padding: 0.5rem 1.25rem;">Log In</a>
+                </div>
+            </nav>
+
+            <!-- Actions Controls -->
+            <div class="header-actions">
+                <button class="btn btn-icon" id="open-search" aria-label="Open Search"><i class="fas fa-search"></i></button>
+                <button class="btn btn-icon" id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ERROR WRAPPER -->
+    <main class="error-wrapper">
+        <div class="error-bg-shapes">
+            <div class="error-shape"></div>
+            <div class="error-shape"></div>
+        </div>
+        
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Frequency Offline</h2>
+        <p class="error-desc">The specific editorial database or briefing article you requested could not be reached. It may have been archived or moved to a different url.</p>
+        
+        <div style="display: flex; gap: 1rem; z-index: 2;">
+            <a href="index.html" class="btn btn-primary"><i class="fas fa-home"></i> Return to News Hub</a>
+            <a href="contact.html" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Report Offline Link</a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <!-- Col 1 -->
+            <div>
+                <a href="index.html" class="footer-logo">
+                    <img src="images/logo.webp" alt="Stackly Logo">
+                </a>
+                <p class="footer-desc">A premium, forward-looking digital publication presenting data-driven updates and reporting at the speeds of tomorrow.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Col 2 -->
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="index.html">Home Center</a></li>
+                    <li><a href="about.html">About Page</a></li>
+                    <li><a href="service.html">Services & Pricing</a></li>
+                    <li><a href="blog.html">Magazine Feed</a></li>
+                    <li><a href="contact.html">Contact Hub</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3 -->
+            <div class="footer-col">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="blog.html?cat=technology">Technology</a></li>
+                    <li><a href="blog.html?cat=business">Business</a></li>
+                    <li><a href="blog.html?cat=politics">Politics</a></li>
+                    <li><a href="blog.html?cat=sports">Sports</a></li>
+                    <li><a href="blog.html?cat=lifestyle">Lifestyle</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 4 -->
+            <div class="footer-col footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Register below for verified weekly briefings straight to your inbox.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.75rem; border-radius: 50%; width: 45px; height: 45px; flex-shrink: 0;"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p class="copyright">&copy; 2026 Stackly News Network. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Service</a>
+                <a href="404.html">Cookie Controls</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>
