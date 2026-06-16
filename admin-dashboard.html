@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Stackly News</title>
+    <meta name="description" content="Manage articles, users, and analytics from the Stackly News admin control panel.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="images/logo.webp" type="image/webp">
+</head>
+
+<body>
+
+    <!-- DASHBOARD LAYOUT -->
+    <div class="dash-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="images/logo.webp" alt="Stackly Logo">
+                </a>
+                <span class="dash-role-badge admin-badge"><i class="fas fa-shield-halved"></i> Admin</span>
+            </div>
+
+            <nav class="dash-nav">
+                <a href="#" class="dash-nav-item active" data-section="overview">
+                    <i class="fas fa-th-large"></i> <span>Overview</span>
+                </a>
+                <a href="#" class="dash-nav-item" data-section="articles">
+                    <i class="fas fa-newspaper"></i> <span>Articles</span>
+                </a>
+                <a href="#" class="dash-nav-item" data-section="users">
+                    <i class="fas fa-users"></i> <span>Users</span>
+                </a>
+                <a href="#" class="dash-nav-item" data-section="analytics">
+                    <i class="fas fa-chart-bar"></i> <span>Analytics</span>
+                </a>
+                <a href="#" class="dash-nav-item" data-section="moderation">
+                    <i class="fas fa-shield-alt"></i> <span>Moderation</span>
+                </a>
+                <a href="#" class="dash-nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i> <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="dash-sidebar-footer">
+                <div class="dash-user-info">
+                    <div class="dash-user-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div>
+                        <h4 id="sidebar-user-name">Admin User</h4>
+                        <p>admin@stackly.com</p>
+                    </div>
+                </div>
+                <button class="btn btn-outline dash-logout-btn" id="admin-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="dash-main">
+            <!-- Top Bar -->
+            <div class="dash-topbar">
+                <div class="dash-topbar-left">
+                    <button class="btn btn-icon dash-menu-toggle" id="dash-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 class="dash-page-title">Admin Dashboard</h1>
+                </div>
+                <div class="dash-topbar-right">
+                    <button class="btn btn-icon" id="theme-toggle" aria-label="Toggle Theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <div class="dash-notification-bell">
+                        <button class="btn btn-icon" aria-label="Notifications">
+                            <i class="fas fa-bell"></i>
+                        </button>
+                        <span class="notification-dot"></span>
+                    </div>
+                    <a href="index.html" class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;">
+                        <i class="fas fa-globe"></i> View Site
+                    </a>
+                </div>
+            </div>
+
+            <!-- OVERVIEW SECTION -->
+            <section class="dash-section active" id="section-overview">
+                <!-- Stats Cards -->
+                <div class="dash-stats-grid">
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-icon" style="background: linear-gradient(135deg, #00f2ff, #0284c7);">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <div class="dash-stat-info">
+                            <p>Total Articles</p>
+                            <h3>1,284</h3>
+                            <span class="dash-stat-change up"><i class="fas fa-arrow-up"></i> 12.5% this month</span>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-icon" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="dash-stat-info">
+                            <p>Subscribers</p>
+                            <h3>24,589</h3>
+                            <span class="dash-stat-change up"><i class="fas fa-arrow-up"></i> 8.3% this month</span>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="dash-stat-info">
+                            <p>Revenue</p>
+                            <h3>$48,210</h3>
+                            <span class="dash-stat-change up"><i class="fas fa-arrow-up"></i> 15.2% this month</span>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <div class="dash-stat-info">
+                            <p>Active Writers</p>
+                            <h3>38</h3>
+                            <span class="dash-stat-change down"><i class="fas fa-arrow-down"></i> 2 fewer this
+                                week</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="dash-quick-actions">
+                    <h3 class="dash-subtitle"><i class="fas fa-bolt"></i> Quick Actions</h3>
+                    <div class="dash-actions-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        <button class="dash-action-btn" onclick="alert('Create New Article — Coming soon!')"
+                            style="padding: 1rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; cursor: pointer; color: var(--text-light); transition: all 0.3s ease;">
+                            <i class="fas fa-plus-circle"
+                                style="color: var(--primary); font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <span>New Article</span>
+                        </button>
+                        <button class="dash-action-btn" onclick="alert('Manage Categories — Coming soon!')"
+                            style="padding: 1rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; cursor: pointer; color: var(--text-light); transition: all 0.3s ease;">
+                            <i class="fas fa-tags"
+                                style="color: #10b981; font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <span>Categories</span>
+                        </button>
+                        <button class="dash-action-btn" onclick="alert('Review Moderation — Coming soon!')"
+                            style="padding: 1rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; cursor: pointer; color: var(--text-light); transition: all 0.3s ease;">
+                            <i class="fas fa-shield-alt"
+                                style="color: #ef4444; font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <span>Moderation</span>
+                        </button>
+                        <button class="dash-action-btn" onclick="alert('Media Library — Coming soon!')"
+                            style="padding: 1rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 8px; cursor: pointer; color: var(--text-light); transition: all 0.3s ease;">
+                            <i class="fas fa-images"
+                                style="color: #a855f7; font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                            <span>Media</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Articles Table -->
+                <div class="dash-table-wrap">
+                    <div class="dash-table-header">
+                        <h3 class="dash-subtitle"><i class="fas fa-clock"></i> Recent Articles</h3>
+                        <button class="btn btn-outline" style="padding: 0.35rem 1rem; font-size: 0.8rem;">View
+                            All</button>
+                    </div>
+                    <div class="dash-table-scroll">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Author</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="dash-table-title">The Rise of Artificial Intelligence in Modern
+                                        Journalism</td>
+                                    <td>Elena Vance</td>
+                                    <td><span class="dash-cat-badge tech">Technology</span></td>
+                                    <td><span class="dash-status-badge published">Published</span></td>
+                                    <td>June 14, 2026</td>
+                                    <td class="dash-table-actions">
+                                        <button title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dash-table-title">Markets Experience Volatility Amid Geopolitical Shifts
+                                    </td>
+                                    <td>Marcus Aurelius</td>
+                                    <td><span class="dash-cat-badge business">Business</span></td>
+                                    <td><span class="dash-status-badge published">Published</span></td>
+                                    <td>June 13, 2026</td>
+                                    <td class="dash-table-actions">
+                                        <button title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dash-table-title">Artificial Intelligence and Soccer Game: Future of
+                                        Sports Analytics</td>
+                                    <td>Sarah Jenkins</td>
+                                    <td><span class="dash-cat-badge sports">Sports</span></td>
+                                    <td><span class="dash-status-badge published">Published</span></td>
+                                    <td>June 12, 2026</td>
+                                    <td class="dash-table-actions">
+                                        <button title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dash-table-title">Next-Gen Quantum Computing: Reaching the Milestones
+                                    </td>
+                                    <td>Elena Vance</td>
+                                    <td><span class="dash-cat-badge tech">Technology</span></td>
+                                    <td><span class="dash-status-badge draft">Draft</span></td>
+                                    <td>June 11, 2026</td>
+                                    <td class="dash-table-actions">
+                                        <button title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dash-table-title">Sustainable Architecture: Redefining Metropolitan
+                                        Skyscrapers</td>
+                                    <td>David Stone</td>
+                                    <td><span class="dash-cat-badge lifestyle">Lifestyle</span></td>
+                                    <td><span class="dash-status-badge review">In Review</span></td>
+                                    <td>June 10, 2026</td>
+                                    <td class="dash-table-actions">
+                                        <button title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="dash-table-title">The Shift in Global Energy: Transitioning to Clean
+                                        Power Grid</td>
+                                    <td>Marcus Aurelius</td>
+                                    <td><span class="dash-cat-badge politics">Politics</span></td>
+                                    <td><span class="dash-status-badge published">Published</span></td>
+                                    <td>June 09, 2026</td>
+                                    <td class="dash-table-actions">
+                                        <button title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Traffic Overview Chart (Simulated) -->
+                <div class="dash-chart-section">
+                    <h3 class="dash-subtitle"><i class="fas fa-chart-area"></i> Traffic Overview (Last 7 Days)</h3>
+                    <div class="dash-chart-bars">
+                        <div class="dash-bar-item">
+                            <div class="dash-bar" style="height: 65%;"><span>Mon</span></div>
+                            <p>12.4K</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar" style="height: 82%;"><span>Tue</span></div>
+                            <p>15.8K</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar" style="height: 55%;"><span>Wed</span></div>
+                            <p>10.2K</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar" style="height: 93%;"><span>Thu</span></div>
+                            <p>18.1K</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar" style="height: 78%;"><span>Fri</span></div>
+                            <p>14.9K</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar" style="height: 42%;"><span>Sat</span></div>
+                            <p>8.1K</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar" style="height: 38%;"><span>Sun</span></div>
+                            <p>7.2K</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ARTICLES SECTION -->
+            <section class="dash-section" id="section-articles">
+                <div class="dash-section-header-bar">
+                    <h2><i class="fas fa-newspaper"></i> Article Management</h2>
+                    <button class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;"
+                        onclick="alert('Create New Article — Coming soon!')">
+                        <i class="fas fa-plus"></i> New Article
+                    </button>
+                </div>
+
+                <!-- Filters -->
+                <div class="dash-filters">
+                    <select class="dash-select">
+                        <option>All Categories</option>
+                        <option>Technology</option>
+                        <option>Business</option>
+                        <option>Sports</option>
+                        <option>Politics</option>
+                        <option>Lifestyle</option>
+                    </select>
+                    <select class="dash-select">
+                        <option>All Status</option>
+                        <option>Published</option>
+                        <option>Draft</option>
+                        <option>In Review</option>
+                    </select>
+                    <div class="dash-search-input">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search articles...">
+                    </div>
+                </div>
+
+                <div class="dash-table-scroll">
+                    <table class="dash-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Views</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td class="dash-table-title">The Rise of Artificial Intelligence in Modern Journalism
+                                </td>
+                                <td>Elena Vance</td>
+                                <td><span class="dash-cat-badge tech">Technology</span></td>
+                                <td><span class="dash-status-badge published">Published</span></td>
+                                <td>8,421</td>
+                                <td>June 14</td>
+                                <td class="dash-table-actions">
+                                    <button title="Edit"><i class="fas fa-edit"></i></button>
+                                    <button title="View"><i class="fas fa-eye"></i></button>
+                                    <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td class="dash-table-title">Markets Experience Volatility Amid Geopolitical Shifts</td>
+                                <td>Marcus Aurelius</td>
+                                <td><span class="dash-cat-badge business">Business</span></td>
+                                <td><span class="dash-status-badge published">Published</span></td>
+                                <td>5,903</td>
+                                <td>June 13</td>
+                                <td class="dash-table-actions">
+                                    <button title="Edit"><i class="fas fa-edit"></i></button>
+                                    <button title="View"><i class="fas fa-eye"></i></button>
+                                    <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td class="dash-table-title">AI and Soccer Game: Future of Sports Analytics</td>
+                                <td>Sarah Jenkins</td>
+                                <td><span class="dash-cat-badge sports">Sports</span></td>
+                                <td><span class="dash-status-badge published">Published</span></td>
+                                <td>4,218</td>
+                                <td>June 12</td>
+                                <td class="dash-table-actions">
+                                    <button title="Edit"><i class="fas fa-edit"></i></button>
+                                    <button title="View"><i class="fas fa-eye"></i></button>
+                                    <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td class="dash-table-title">Next-Gen Quantum Computing: Reaching the Milestones</td>
+                                <td>Elena Vance</td>
+                                <td><span class="dash-cat-badge tech">Technology</span></td>
+                                <td><span class="dash-status-badge draft">Draft</span></td>
+                                <td>—</td>
+                                <td>June 11</td>
+                                <td class="dash-table-actions">
+                                    <button title="Edit"><i class="fas fa-edit"></i></button>
+                                    <button title="Preview"><i class="fas fa-eye"></i></button>
+                                    <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td class="dash-table-title">Sustainable Architecture: Redefining Metropolitan
+                                    Skyscrapers</td>
+                                <td>David Stone</td>
+                                <td><span class="dash-cat-badge lifestyle">Lifestyle</span></td>
+                                <td><span class="dash-status-badge review">In Review</span></td>
+                                <td>—</td>
+                                <td>June 10</td>
+                                <td class="dash-table-actions">
+                                    <button title="Edit"><i class="fas fa-edit"></i></button>
+                                    <button title="Preview"><i class="fas fa-eye"></i></button>
+                                    <button title="Delete"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- USERS SECTION -->
+            <section class="dash-section" id="section-users">
+                <div class="dash-section-header-bar">
+                    <h2><i class="fas fa-users"></i> User Management</h2>
+                    <button class="btn btn-primary" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;"
+                        onclick="alert('Invite User — Coming soon!')">
+                        <i class="fas fa-user-plus"></i> Invite User
+                    </button>
+                </div>
+
+                <div class="dash-users-grid">
+                    <!-- User Card 1 -->
+                    <div class="dash-user-card">
+                        <div class="dash-user-card-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100"
+                                alt="Elena">
+                        </div>
+                        <h4>Elena Vance</h4>
+                        <p class="dash-user-card-role">Editor-in-Chief</p>
+                        <span class="dash-status-badge published">Active</span>
+                        <div class="dash-user-card-stats">
+                            <div><strong>142</strong><span>Articles</span></div>
+                            <div><strong>8.2K</strong><span>Followers</span></div>
+                        </div>
+                        <div class="dash-user-card-actions">
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+
+                    <!-- User Card 2 -->
+                    <div class="dash-user-card">
+                        <div class="dash-user-card-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100"
+                                alt="David">
+                        </div>
+                        <h4>David Stone</h4>
+                        <p class="dash-user-card-role">Senior Columnist</p>
+                        <span class="dash-status-badge published">Active</span>
+                        <div class="dash-user-card-stats">
+                            <div><strong>89</strong><span>Articles</span></div>
+                            <div><strong>5.1K</strong><span>Followers</span></div>
+                        </div>
+                        <div class="dash-user-card-actions">
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+
+                    <!-- User Card 3 -->
+                    <div class="dash-user-card">
+                        <div class="dash-user-card-avatar">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100"
+                                alt="Marcus">
+                        </div>
+                        <h4>Marcus Aurelius</h4>
+                        <p class="dash-user-card-role">Economics Editor</p>
+                        <span class="dash-status-badge published">Active</span>
+                        <div class="dash-user-card-stats">
+                            <div><strong>114</strong><span>Articles</span></div>
+                            <div><strong>6.7K</strong><span>Followers</span></div>
+                        </div>
+                        <div class="dash-user-card-actions">
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+
+                    <!-- User Card 4 -->
+                    <div class="dash-user-card">
+                        <div class="dash-user-card-avatar">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=100"
+                                alt="Sarah">
+                        </div>
+                        <h4>Sarah Jenkins</h4>
+                        <p class="dash-user-card-role">Sports Editor</p>
+                        <span class="dash-status-badge review">On Leave</span>
+                        <div class="dash-user-card-stats">
+                            <div><strong>67</strong><span>Articles</span></div>
+                            <div><strong>3.9K</strong><span>Followers</span></div>
+                        </div>
+                        <div class="dash-user-card-actions">
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+
+                    <!-- User Card 5 -->
+                    <div class="dash-user-card">
+                        <div class="dash-user-card-avatar"
+                            style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                            <i class="fas fa-user" style="font-size: 1.5rem; color: #fff;"></i>
+                        </div>
+                        <h4>John Miller</h4>
+                        <p class="dash-user-card-role">Subscriber (Premium)</p>
+                        <span class="dash-status-badge published">Active</span>
+                        <div class="dash-user-card-stats">
+                            <div><strong>—</strong><span>Articles</span></div>
+                            <div><strong>12</strong><span>Bookmarks</span></div>
+                        </div>
+                        <div class="dash-user-card-actions">
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+
+                    <!-- User Card 6 -->
+                    <div class="dash-user-card">
+                        <div class="dash-user-card-avatar"
+                            style="background: linear-gradient(135deg, #6366f1, #4f46e5);">
+                            <i class="fas fa-user" style="font-size: 1.5rem; color: #fff;"></i>
+                        </div>
+                        <h4>Anna Chen</h4>
+                        <p class="dash-user-card-role">Subscriber (Free)</p>
+                        <span class="dash-status-badge draft">Inactive</span>
+                        <div class="dash-user-card-stats">
+                            <div><strong>—</strong><span>Articles</span></div>
+                            <div><strong>3</strong><span>Bookmarks</span></div>
+                        </div>
+                        <div class="dash-user-card-actions">
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-edit"></i> Edit</button>
+                            <button class="btn btn-outline" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;"><i
+                                    class="fas fa-ban"></i> Suspend</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANALYTICS SECTION -->
+            <section class="dash-section" id="section-analytics">
+                <h2><i class="fas fa-chart-bar"></i> Analytics Overview</h2>
+                <div class="dash-analytics-grid">
+                    <div class="dash-analytics-card">
+                        <h4>Top Performing Article</h4>
+                        <p class="dash-analytics-highlight">The Rise of AI in Modern Journalism</p>
+                        <span>8,421 views &bull; 342 shares &bull; 4.8 avg. read time</span>
+                    </div>
+                    <div class="dash-analytics-card">
+                        <h4>Top Category</h4>
+                        <p class="dash-analytics-highlight">Technology</p>
+                        <span>38% of total traffic &bull; 485 articles</span>
+                    </div>
+                    <div class="dash-analytics-card">
+                        <h4>Engagement Rate</h4>
+                        <p class="dash-analytics-highlight">67.4%</p>
+                        <span>+5.2% vs last month &bull; Avg. session 3m 42s</span>
+                    </div>
+                    <div class="dash-analytics-card">
+                        <h4>Newsletter Growth</h4>
+                        <p class="dash-analytics-highlight">+1,240 new subs</p>
+                        <span>Open rate: 42.8% &bull; Click rate: 18.3%</span>
+                    </div>
+                </div>
+
+                <!-- Category Breakdown -->
+                <div class="dash-category-breakdown">
+                    <h3 class="dash-subtitle" style="margin-bottom: 1.5rem;"><i class="fas fa-pie-chart"></i> Category
+                        Traffic Share</h3>
+                    <div class="dash-breakdown-bars">
+                        <div class="dash-breakdown-item">
+                            <div class="dash-breakdown-label">
+                                <span>Technology</span><span>38%</span>
+                            </div>
+                            <div class="dash-breakdown-track">
+                                <div class="dash-breakdown-fill"
+                                    style="width: 38%; background: linear-gradient(90deg, #00f2ff, #0284c7);"></div>
+                            </div>
+                        </div>
+                        <div class="dash-breakdown-item">
+                            <div class="dash-breakdown-label">
+                                <span>Business</span><span>24%</span>
+                            </div>
+                            <div class="dash-breakdown-track">
+                                <div class="dash-breakdown-fill"
+                                    style="width: 24%; background: linear-gradient(90deg, #3b82f6, #1d4ed8);"></div>
+                            </div>
+                        </div>
+                        <div class="dash-breakdown-item">
+                            <div class="dash-breakdown-label">
+                                <span>Sports</span><span>18%</span>
+                            </div>
+                            <div class="dash-breakdown-track">
+                                <div class="dash-breakdown-fill"
+                                    style="width: 18%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+                            </div>
+                        </div>
+                        <div class="dash-breakdown-item">
+                            <div class="dash-breakdown-label">
+                                <span>Politics</span><span>12%</span>
+                            </div>
+                            <div class="dash-breakdown-track">
+                                <div class="dash-breakdown-fill"
+                                    style="width: 12%; background: linear-gradient(90deg, #a855f7, #7c3aed);"></div>
+                            </div>
+                        </div>
+                        <div class="dash-breakdown-item">
+                            <div class="dash-breakdown-label">
+                                <span>Lifestyle</span><span>8%</span>
+                            </div>
+                            <div class="dash-breakdown-track">
+                                <div class="dash-breakdown-fill"
+                                    style="width: 8%; background: linear-gradient(90deg, #eab308, #ca8a04);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MODERATION SECTION -->
+            <section class="dash-section" id="section-moderation">
+                <div class="dash-section-header-bar">
+                    <h2><i class="fas fa-shield-alt"></i> Moderation Queue</h2>
+                    <span style="color: var(--text-muted); font-size: 0.9rem;">12 pending actions</span>
+                </div>
+
+                <div class="dash-table-wrap">
+                    <div class="dash-table-header">
+                        <h3 class="dash-subtitle">Flagged Comments</h3>
+                    </div>
+                    <div class="dash-table-scroll">
+                        <table class="dash-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Comment Snippet</th>
+                                    <th>Article</th>
+                                    <th>Reason</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>@angry_reader</strong></td>
+                                    <td>"This author has no idea what they are talking about..."</td>
+                                    <td>The Rise of AI</td>
+                                    <td><span class="dash-status-badge review">Spam</span></td>
+                                    <td class="dash-table-actions">
+                                        <button title="Approve"><i class="fas fa-check"
+                                                style="color:#10b981;"></i></button>
+                                        <button title="Delete"><i class="fas fa-trash-alt"
+                                                style="color:#ef4444;"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>@bot_acc_44</strong></td>
+                                    <td>"Click here to earn $5000 a week working from home! http..."</td>
+                                    <td>Global Energy Shift</td>
+                                    <td><span class="dash-status-badge review">Malicious Link</span></td>
+                                    <td class="dash-table-actions">
+                                        <button title="Approve"><i class="fas fa-check"
+                                                style="color:#10b981;"></i></button>
+                                        <button title="Delete"><i class="fas fa-trash-alt"
+                                                style="color:#ef4444;"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SETTINGS SECTION -->
+            <section class="dash-section" id="section-settings">
+                <h2><i class="fas fa-cog"></i> Admin Settings</h2>
+                <div class="dash-settings-grid">
+                    <div class="dash-settings-card">
+                        <h4><i class="fas fa-user-cog"></i> Profile Settings</h4>
+                        <div class="dash-settings-form">
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label>Display Name</label>
+                                <input type="text" class="form-control" value="Admin User">
+                            </div>
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label>Email</label>
+                                <input type="email" class="form-control" value="admin@stackly.com" readonly>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label>Bio</label>
+                                <textarea class="form-control" rows="3"
+                                    placeholder="Write a short bio...">Chief Administrator at Stackly News Network.</textarea>
+                            </div>
+                            <button class="btn btn-primary" style="padding: 0.5rem 1.5rem;"
+                                onclick="alert('Settings saved (Simulation)')">Save Changes</button>
+                        </div>
+                    </div>
+                    <div class="dash-settings-card">
+                        <h4><i class="fas fa-bell"></i> Notification Preferences</h4>
+                        <div class="dash-toggle-list">
+                            <label class="dash-toggle-item">
+                                <span>Email notifications for new articles</span>
+                                <input type="checkbox" checked>
+                                <span class="dash-toggle-slider"></span>
+                            </label>
+                            <label class="dash-toggle-item">
+                                <span>User signup alerts</span>
+                                <input type="checkbox" checked>
+                                <span class="dash-toggle-slider"></span>
+                            </label>
+                            <label class="dash-toggle-item">
+                                <span>Weekly analytics digest</span>
+                                <input type="checkbox" checked>
+                                <span class="dash-toggle-slider"></span>
+                            </label>
+                            <label class="dash-toggle-item">
+                                <span>Comment moderation alerts</span>
+                                <input type="checkbox">
+                                <span class="dash-toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>

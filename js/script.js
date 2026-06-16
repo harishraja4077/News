@@ -4,13 +4,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav-links a, nav a');
-    
+
+    // Auth Check for Navigation
+    const authData = JSON.parse(localStorage.getItem('stacklyAuth') || 'null');
+    const isLoggedIn = authData && authData.loggedIn;
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPath) {
             link.classList.add('active');
         } else {
             link.classList.remove('active');
+        }
+
+        // Change "Log In" to "Dashboard"
+        if (href === 'login.html' && isLoggedIn) {
+            link.textContent = 'Dashboard';
+            link.setAttribute('href', authData.role === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html');
         }
     });
 
@@ -39,17 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('light-mode');
             const isLight = document.body.classList.contains('light-mode');
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            
+
             if (themeIcon) {
                 // Spin transition
                 themeIcon.style.transform = 'rotate(360deg)';
                 setTimeout(() => {
                     themeIcon.style.transform = 'none';
                 }, 300);
-                
+
                 themeIcon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
             }
-            
+
             // Dispatch custom event for secondary charts/elements if needed
             window.dispatchEvent(new CustomEvent('themechanged', { detail: { theme: isLight ? 'light' : 'dark' } }));
         });
@@ -132,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const category = card.getAttribute('data-category') || '';
             const title = card.querySelector('.article-title').textContent.toLowerCase();
             const excerpt = card.querySelector('.article-text').textContent.toLowerCase();
-            
+
             const categoryMatch = (currentCategory === 'all' || category === currentCategory);
             const searchMatch = (title.includes(searchQuery) || excerpt.includes(searchQuery));
 
@@ -173,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const articleModal = document.getElementById('article-modal');
     const modalOverlay = document.getElementById('modal-overlay');
     const modalClose = document.getElementById('modal-close');
-    
+
     // Elements inside modal
     const modalImg = document.getElementById('modal-img');
     const modalTitle = document.getElementById('modal-title');
@@ -289,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pricingCheckbox) {
         pricingCheckbox.addEventListener('change', () => {
             const isYearly = pricingCheckbox.checked;
-            
+
             if (isYearly) {
                 if (premiumPriceSpan) {
                     animatePriceChange(premiumPriceSpan, 99);
@@ -330,13 +340,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 9. FAQ ACCORDION
     // ==========================================
     const accordionHeaders = document.querySelectorAll('.accordion-header');
-    
+
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
             const item = header.parentElement;
             const body = item.querySelector('.accordion-body');
             const isActive = item.classList.contains('active');
-            
+
             // Close all items
             document.querySelectorAll('.accordion-item').forEach(i => {
                 i.classList.remove('active');
@@ -352,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================
-    // 10. LOGIN FLIP SWITCHER
+    // 10. LOGIN, SIGNUP & ROLE TOGGLE LOGIC
     // ==========================================
     const registerToggle = document.getElementById('toggle-to-register');
     const loginToggle = document.getElementById('toggle-to-login');
@@ -369,6 +379,78 @@ document.addEventListener('DOMContentLoaded', () => {
         loginToggle.addEventListener('click', (e) => {
             e.preventDefault();
             authContainer.classList.remove('flip');
+        });
+    }
+
+    // Role Toggles
+    const roleToggleWraps = document.querySelectorAll('.role-toggle-wrap');
+    roleToggleWraps.forEach(wrap => {
+        const btns = wrap.querySelectorAll('.role-toggle-btn');
+        btns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                btns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    });
+
+    // Toggle Password Visibility
+    const togglePassBtn = document.getElementById('toggle-pass-visibility');
+    const loginPass = document.getElementById('login-pass');
+    if (togglePassBtn && loginPass) {
+        togglePassBtn.addEventListener('click', () => {
+            const type = loginPass.getAttribute('type') === 'password' ? 'text' : 'password';
+            loginPass.setAttribute('type', type);
+            togglePassBtn.querySelector('i').className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+        });
+    }
+
+    // Login Submission
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim();
+            const pass = document.getElementById('login-pass').value.trim();
+            const errorDiv = document.getElementById('login-error');
+            const submitBtn = document.getElementById('login-submit-btn');
+            
+            // Get selected role
+            const frontSide = loginForm.closest('.auth-side-front');
+            const activeRoleBtn = frontSide.querySelector('.role-toggle-btn.active');
+            const role = activeRoleBtn ? activeRoleBtn.getAttribute('data-role') : 'user';
+
+            if (errorDiv) errorDiv.style.display = 'none';
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+                submitBtn.disabled = true;
+            }
+
+            setTimeout(() => {
+                // Hardcoded demo credentials validation
+                let valid = false;
+                if (role === 'admin' && email === 'admin@gmail.com' && pass === 'admin123') {
+                    valid = true;
+                } else if (role === 'user' && email === 'user@gmail.com' && pass === 'user123') {
+                    valid = true;
+                }
+
+                if (valid) {
+                    localStorage.setItem('stacklyAuth', JSON.stringify({
+                        loggedIn: true,
+                        role: role,
+                        email: email
+                    }));
+                    window.location.href = role === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html';
+                } else {
+                    if (errorDiv) errorDiv.style.display = 'flex';
+                    if (submitBtn) {
+                        submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+                        submitBtn.disabled = false;
+                    }
+                }
+            }, 800);
         });
     }
 
@@ -407,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Basic fields check
             const name = document.getElementById('form-name').value.trim();
             const email = document.getElementById('form-email').value.trim();
@@ -421,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Simulate server request
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
-            
+
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
@@ -459,14 +541,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // 13. INTERACTIVE POLL FUNCTIONALITY
     // ==========================================
     const pollButtons = document.querySelectorAll('.poll-option-btn');
-    
+
     pollButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const container = btn.closest('.poll-options');
             if (!container) return;
-            
+
             const buttons = container.querySelectorAll('.poll-option-btn');
-            
+
             buttons.forEach(b => {
                 b.classList.add('voted');
                 const percent = b.getAttribute('data-percent');
@@ -475,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     fill.style.width = percent + '%';
                 }
             });
-            
+
             // Show toast for thank you
             if (typeof showToast === 'function') {
                 showToast('Thank you for voting! Your opinion has been registered.', 'fas fa-vote-yea');
