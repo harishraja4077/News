@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Dashboard — Stackly News</title>
-    <meta name="description" content="Manage your reading profile, bookmarks, and subscription settings on Stackly News.">
+    <meta name="description"
+        content="Manage your reading profile, bookmarks, and subscription settings on Stackly News.">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dash-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="images/logo.webp" type="image/webp">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
         /* ── Reading Progress Ring ── */
         .reading-ring-card {
@@ -23,8 +28,17 @@
             gap: 0.6rem;
         }
 
-        .ring-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
-        .ring-value { font-size: 0.8rem; color: var(--primary); font-weight: 700; }
+        .ring-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .ring-value {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
 
         /* ── Authors section ── */
         .author-card {
@@ -33,7 +47,7 @@
             border-radius: 16px;
             padding: 1.5rem;
             text-align: center;
-            transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             animation: fadeInUp 0.5s ease backwards;
             position: relative;
             overflow: hidden;
@@ -42,7 +56,9 @@
         .author-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 3px;
             background: linear-gradient(90deg, var(--primary), #6366f1);
             transform: scaleX(0);
@@ -50,20 +66,23 @@
             transition: transform 0.4s ease;
         }
 
-        .author-card:hover::before { transform: scaleX(1); }
+        .author-card:hover::before {
+            transform: scaleX(1);
+        }
 
         .author-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 24px 50px rgba(0,0,0,0.25);
-            border-color: rgba(0,242,255,0.15);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
+            border-color: rgba(0, 242, 255, 0.15);
         }
 
         .author-avatar {
-            width: 80px; height: 80px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             overflow: hidden;
             margin: 0 auto 1rem;
-            border: 3px solid rgba(0,242,255,0.2);
+            border: 3px solid rgba(0, 242, 255, 0.2);
             transition: border-color 0.3s, transform 0.3s;
         }
 
@@ -72,7 +91,11 @@
             transform: scale(1.05);
         }
 
-        .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         .author-specialty {
             font-size: 0.78rem;
@@ -81,8 +104,8 @@
         }
 
         .author-latest {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             padding: 0.75rem;
             text-align: left;
@@ -105,7 +128,9 @@
             line-height: 1.4;
         }
 
-        body.light-mode .author-latest p { color: var(--text-dark); }
+        body.light-mode .author-latest p {
+            color: var(--text-dark);
+        }
 
         /* ── Subscription plan cards ── */
         .plan-cards-grid {
@@ -128,27 +153,38 @@
         .plan-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 4px;
         }
 
-        .plan-card.free::before    { background: rgba(255,255,255,0.2); }
-        .plan-card.premium::before { background: linear-gradient(90deg, var(--primary), #6366f1); }
-        .plan-card.pro::before     { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        .plan-card.free::before {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .plan-card.premium::before {
+            background: linear-gradient(90deg, var(--primary), #6366f1);
+        }
+
+        .plan-card.pro::before {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+        }
 
         .plan-card.premium {
-            border-color: rgba(0,242,255,0.2);
-            box-shadow: 0 0 30px rgba(0,242,255,0.06);
+            border-color: rgba(0, 242, 255, 0.2);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.06);
         }
 
         .plan-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
         }
 
         .plan-card-popular {
             position: absolute;
-            top: 16px; right: 16px;
+            top: 16px;
+            right: 16px;
             background: var(--primary);
             color: #000;
             font-size: 0.65rem;
@@ -159,11 +195,31 @@
             letter-spacing: 0.5px;
         }
 
-        .plan-name  { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.3rem; }
-        .plan-price { font-size: 2rem; font-weight: 900; margin: 0.75rem 0; }
-        .plan-price span { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+        .plan-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
 
-        .plan-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0 1.25rem; }
+        .plan-price {
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 0.75rem 0;
+        }
+
+        .plan-price span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .plan-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1rem 0 1.25rem;
+        }
 
         .plan-features li {
             display: flex;
@@ -173,34 +229,57 @@
             color: var(--text-muted);
         }
 
-        .plan-features li i { color: #10b981; font-size: 0.75rem; }
-        .plan-features li.disabled { opacity: 0.4; }
-        .plan-features li.disabled i { color: var(--text-muted); }
+        .plan-features li i {
+            color: #10b981;
+            font-size: 0.75rem;
+        }
+
+        .plan-features li.disabled {
+            opacity: 0.4;
+        }
+
+        .plan-features li.disabled i {
+            color: var(--text-muted);
+        }
 
         /* ── History timeline ── */
-        .history-timeline { display: flex; flex-direction: column; gap: 0; }
+        .history-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
 
-        .history-group { position: relative; padding-left: 2.25rem; }
+        .history-group {
+            position: relative;
+            padding-left: 2.25rem;
+        }
 
         .history-group::before {
             content: '';
             position: absolute;
-            left: 11px; top: 28px; bottom: -2px;
+            left: 11px;
+            top: 28px;
+            bottom: -2px;
             width: 2px;
-            background: rgba(0,242,255,0.1);
+            background: rgba(0, 242, 255, 0.1);
         }
 
-        .history-group:last-child::before { display: none; }
+        .history-group:last-child::before {
+            display: none;
+        }
 
         .history-dot {
             position: absolute;
             left: 0;
             top: 6px;
-            width: 24px; height: 24px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            background: rgba(0,242,255,0.1);
-            border: 2px solid rgba(0,242,255,0.25);
-            display: flex; align-items: center; justify-content: center;
+            background: rgba(0, 242, 255, 0.1);
+            border: 2px solid rgba(0, 242, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 0.6rem;
             color: var(--primary);
         }
@@ -216,7 +295,7 @@
 
         .history-entry {
             background: var(--glass-bg);
-            border: 1px solid rgba(255,255,255,0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
             border-radius: 12px;
             padding: 0.9rem 1rem;
             margin-bottom: 0.75rem;
@@ -228,30 +307,56 @@
         }
 
         .history-entry:hover {
-            background: rgba(0,242,255,0.04);
-            border-color: rgba(0,242,255,0.1);
+            background: rgba(0, 242, 255, 0.04);
+            border-color: rgba(0, 242, 255, 0.1);
             transform: translateX(4px);
         }
 
-        body.light-mode .history-entry { background: rgba(255,255,255,0.7); border-color: rgba(0,0,0,0.05); }
+        body.light-mode .history-entry {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(0, 0, 0, 0.05);
+        }
 
         .history-entry-thumb {
-            width: 56px; height: 42px;
+            width: 56px;
+            height: 42px;
             border-radius: 8px;
             overflow: hidden;
             flex-shrink: 0;
         }
 
-        .history-entry-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .history-entry-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-        .history-entry h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
-        .history-entry p  { font-size: 0.75rem; color: var(--text-muted); }
+        .history-entry h4 {
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .history-entry p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
 
         /* ── Topbar date ── */
-        .topbar-date { font-size: 0.8rem; color: var(--text-muted); display: none; }
-        @media (min-width: 900px) { .topbar-date { display: block; } }
+        .topbar-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: none;
+        }
+
+        @media (min-width: 900px) {
+            .topbar-date {
+                display: block;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- DASHBOARD LAYOUT -->
@@ -260,12 +365,13 @@
         <!-- SIDEBAR -->
         <aside class="dash-sidebar" id="dash-sidebar">
             <div class="dash-sidebar-header">
-    <a href="index.html" class="logo">
-        <img src="images/logo.webp" alt="Stackly Logo">
-    </a>
-    <span class="dash-role-badge user-badge"><i class="fas fa-user"></i>User</span>
-    <button id="dash-sidebar-close" class="btn btn-icon dash-sidebar-close" aria-label="Close Sidebar"><i class="fas fa-times"></i></button>
-</div>
+                <a href="index.html" class="logo">
+                    <img src="images/logo.webp" alt="Stackly Logo">
+                </a>
+                <span class="dash-role-badge user-badge"><i class="fas fa-user"></i>User</span>
+                <button id="dash-sidebar-close" class="btn btn-icon dash-sidebar-close" aria-label="Close Sidebar"><i
+                        class="fas fa-times"></i></button>
+            </div>
 
             <nav class="dash-nav">
                 <span class="dash-nav-label">Menu</span>
@@ -280,7 +386,7 @@
                     <i class="fas fa-history"></i> <span>Reading History</span>
                 </a>
 
-               
+
                 <a href="#" class="dash-nav-item" data-section="authors">
                     <i class="fas fa-pen-nib"></i> <span>Authors</span>
                 </a>
@@ -288,7 +394,7 @@
                     <i class="fas fa-crown"></i> <span>Subscription</span>
                 </a>
 
-                
+
                 <a href="#" class="dash-nav-item" data-section="settings">
                     <i class="fas fa-cog"></i> <span>Settings</span>
                 </a>
@@ -334,7 +440,8 @@
                     <div class="topbar-avatar" title="My Profile">
                         <i class="fas fa-user"></i>
                     </div>
-                    <a href="blog.html" class="btn btn-primary topbar-btn" style="padding:0.42rem 1rem;font-size:0.82rem;display:flex;align-items:center;gap:0.4rem;">
+                    <a href="blog.html" class="btn btn-primary topbar-btn"
+                        style="padding:0.42rem 1rem;font-size:0.82rem;display:flex;align-items:center;gap:0.4rem;">
                         <i class="fas fa-book-open"></i> <span class="btn-text">Browse News</span>
                     </a>
                 </div>
@@ -348,8 +455,9 @@
                 <!-- Welcome Banner -->
                 <div class="user-welcome-banner stagger-in" style="--delay:0.05s">
                     <div class="user-welcome-text">
-                        <h2>Welcome back, <span id="user-welcome-name">Reader</span>! 👋</h2>
-                        <p>You're on a <strong style="color:var(--primary);">12-day streak</strong>. Keep the momentum going — new stories are waiting.</p>
+                        <h2>Welcome back, <span id="user-welcome-name">User</span>! 👋</h2>
+                        <p>You're on a <strong style="color:var(--primary);">12-day streak</strong>. Keep the momentum
+                            going — new stories are waiting.</p>
                         <div class="user-welcome-stats">
                             <div class="user-welcome-stat">
                                 <strong>128</strong><span>Articles Read</span>
@@ -366,7 +474,9 @@
                         <a href="blog.html" class="btn btn-primary" style="padding:0.7rem 1.75rem;">
                             <i class="fas fa-book-open"></i> Explore Articles
                         </a>
-                        <a href="#" onclick="document.querySelector('[data-section=subscription]').click();return false;" style="font-size:0.8rem;color:var(--primary);text-decoration:underline;text-underline-offset:3px;">
+                        <a href="#"
+                            onclick="document.querySelector('[data-section=subscription]').click();return false;"
+                            style="font-size:0.8rem;color:var(--primary);text-decoration:underline;text-underline-offset:3px;">
                             Manage subscription →
                         </a>
                     </div>
@@ -375,13 +485,16 @@
                 <!-- Stats Cards -->
                 <div class="dash-stats-grid">
                     <!-- Reading Goal (donut) -->
-                    <div class="dash-stat-card stagger-in reading-ring-card" style="--delay:0.1s;flex-direction:column;align-items:center;gap:0.6rem;">
+                    <div class="dash-stat-card stagger-in reading-ring-card"
+                        style="--delay:0.1s;flex-direction:column;align-items:center;gap:0.6rem;">
                         <div class="ring-label">Daily Reading Goal</div>
-                        <div class="css-donut-chart" style="background:conic-gradient(var(--primary) 80%,rgba(255,255,255,0.07) 0);width:90px;height:90px;">
+                        <div class="css-donut-chart"
+                            style="background:conic-gradient(var(--primary) 80%,rgba(255,255,255,0.07) 0);width:90px;height:90px;">
                             <span class="css-donut-chart-label" style="font-size:1.1rem;">80%</span>
                         </div>
                         <div class="ring-value">40 / 50 mins</div>
-                        <span class="dash-stat-change up" style="font-size:0.72rem;"><i class="fas fa-arrow-up"></i> 10 mins more than avg</span>
+                        <span class="dash-stat-change up" style="font-size:0.72rem;"><i class="fas fa-arrow-up"></i> 10
+                            mins more than avg</span>
                     </div>
 
                     <div class="dash-stat-card stagger-in" style="--delay:0.15s">
@@ -393,7 +506,10 @@
                             <h3>128</h3>
                             <span class="dash-stat-change up"><i class="fas fa-arrow-up"></i> 14 this week</span>
                             <div class="dash-stat-sparkline">
-                                <span style="height:40%"></span><span style="height:50%"></span><span style="height:60%"></span><span style="height:55%"></span><span style="height:70%"></span><span style="height:80%"></span><span class="peak" style="height:90%"></span>
+                                <span style="height:40%"></span><span style="height:50%"></span><span
+                                    style="height:60%"></span><span style="height:55%"></span><span
+                                    style="height:70%"></span><span style="height:80%"></span><span class="peak"
+                                    style="height:90%"></span>
                             </div>
                         </div>
                     </div>
@@ -407,7 +523,10 @@
                             <h3>12 Days</h3>
                             <span class="dash-stat-change up"><i class="fas fa-arrow-up"></i> Personal best!</span>
                             <div class="dash-stat-sparkline">
-                                <span style="height:30%"></span><span style="height:45%"></span><span style="height:60%"></span><span style="height:70%"></span><span style="height:80%"></span><span style="height:90%"></span><span class="peak" style="height:100%"></span>
+                                <span style="height:30%"></span><span style="height:45%"></span><span
+                                    style="height:60%"></span><span style="height:70%"></span><span
+                                    style="height:80%"></span><span style="height:90%"></span><span class="peak"
+                                    style="height:100%"></span>
                             </div>
                         </div>
                     </div>
@@ -419,9 +538,14 @@
                         <div class="dash-stat-info">
                             <p>Time Saved</p>
                             <h3>4.5 hrs</h3>
-                            <span class="dash-stat-change" style="color:var(--text-muted);background:rgba(255,255,255,0.05);">Via Premium Summaries</span>
+                            <span class="dash-stat-change"
+                                style="color:var(--text-muted);background:rgba(255,255,255,0.05);">Via Premium
+                                Summaries</span>
                             <div class="dash-stat-sparkline">
-                                <span style="height:50%"></span><span style="height:55%"></span><span style="height:60%"></span><span style="height:65%"></span><span style="height:70%"></span><span style="height:75%"></span><span class="peak" style="height:80%"></span>
+                                <span style="height:50%"></span><span style="height:55%"></span><span
+                                    style="height:60%"></span><span style="height:65%"></span><span
+                                    style="height:70%"></span><span style="height:75%"></span><span class="peak"
+                                    style="height:80%"></span>
                             </div>
                         </div>
                     </div>
@@ -433,11 +557,14 @@
                     <div class="user-interests-tags">
                         <span class="user-interest-tag"><i class="fas fa-microchip"></i> Technology</span>
                         <span class="user-interest-tag"><i class="fas fa-chart-line"></i> Business</span>
-                        <span class="user-interest-tag active"><i class="fas fa-robot"></i> Artificial Intelligence</span>
+                        <span class="user-interest-tag active"><i class="fas fa-robot"></i> Artificial
+                            Intelligence</span>
                         <span class="user-interest-tag"><i class="fas fa-bolt"></i> Energy</span>
                         <span class="user-interest-tag"><i class="fas fa-futbol"></i> Sports</span>
                         <span class="user-interest-tag"><i class="fas fa-globe"></i> World Affairs</span>
-                        <button style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 1rem;background:transparent;color:var(--primary);border:1px dashed rgba(0,242,255,0.4);border-radius:20px;font-size:0.82rem;cursor:pointer;transition:all 0.3s;font-family:inherit;" onclick="window.showToast && showToast('Topic picker — coming soon!','info')">
+                        <button
+                            style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.45rem 1rem;background:transparent;color:var(--primary);border:1px dashed rgba(0,242,255,0.4);border-radius:20px;font-size:0.82rem;cursor:pointer;transition:all 0.3s;font-family:inherit;"
+                            onclick="window.showToast && showToast('Topic picker — coming soon!','info')">
                             <i class="fas fa-plus"></i> Add Topic
                         </button>
                     </div>
@@ -445,7 +572,8 @@
 
                 <!-- Achievements -->
                 <div class="stagger-in" style="--delay:0.35s;margin-bottom:2rem;">
-                    <h3 class="dash-subtitle"><i class="fas fa-trophy" style="color:#f59e0b;"></i> Reading Achievements</h3>
+                    <h3 class="dash-subtitle"><i class="fas fa-trophy" style="color:#f59e0b;"></i> Reading Achievements
+                    </h3>
                     <div class="user-achievements-grid">
                         <div class="achievement-badge" data-tooltip="Read 5 articles in a single day">
                             <span class="achievement-icon">⚡</span>
@@ -487,7 +615,8 @@
                         <div class="user-rec-card" onclick="window.location.href='blog.html'">
                             <img src="images/insights1.webp" alt="Quantum Computing">
                             <div class="user-rec-info">
-                                <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;">Technology</span>
+                                <span class="category-tag"
+                                    style="font-size:0.65rem;padding:0.15rem 0.5rem;">Technology</span>
                                 <h4>Next-Gen Quantum Computing: Reaching the Milestones</h4>
                                 <p>Elena Vance &bull; 5 min read</p>
                             </div>
@@ -495,7 +624,8 @@
                         <div class="user-rec-card" onclick="window.location.href='blog.html'">
                             <img src="images/insights3.webp" alt="Energy">
                             <div class="user-rec-info">
-                                <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#a855f7;color:#a855f7;background:rgba(168,85,247,0.1);">Politics</span>
+                                <span class="category-tag"
+                                    style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#a855f7;color:#a855f7;background:rgba(168,85,247,0.1);">Politics</span>
                                 <h4>The Shift in Global Energy: Transitioning to Clean Power</h4>
                                 <p>Marcus Aurelius &bull; 4 min read</p>
                             </div>
@@ -503,7 +633,8 @@
                         <div class="user-rec-card" onclick="window.location.href='blog.html'">
                             <img src="images/insights2.webp" alt="Architecture">
                             <div class="user-rec-info">
-                                <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#eab308;color:#eab308;background:rgba(234,179,8,0.1);">Lifestyle</span>
+                                <span class="category-tag"
+                                    style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#eab308;color:#eab308;background:rgba(234,179,8,0.1);">Lifestyle</span>
                                 <h4>Sustainable Architecture: Redefining Metropolitan Skyscrapers</h4>
                                 <p>David Stone &bull; 6 min read</p>
                             </div>
@@ -521,16 +652,19 @@
                     <h2><i class="fas fa-bookmark"></i> Saved Bookmarks</h2>
                     <div style="display:flex;align-items:center;gap:0.75rem;">
                         <span style="color:var(--text-muted);font-size:0.88rem;">24 saved articles</span>
-                        <button class="btn btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;" onclick="window.showToast && showToast('Export bookmarks — coming soon!','info')">
+                        <button class="btn btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;"
+                            onclick="window.showToast && showToast('Export bookmarks — coming soon!','info')">
                             <i class="fas fa-download"></i> Export
                         </button>
                     </div>
                 </div>
 
                 <div class="advanced-filters">
-                    <div style="display:flex;align-items:center;gap:0.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:10px;padding:0.5rem 1rem;flex-shrink:0;">
+                    <div
+                        style="display:flex;align-items:center;gap:0.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:10px;padding:0.5rem 1rem;flex-shrink:0;">
                         <i class="fas fa-search" style="color:var(--text-muted);"></i>
-                        <input type="text" placeholder="Search bookmarks..." style="background:none;border:none;color:var(--text-primary);outline:none;font-size:0.85rem;width:180px;">
+                        <input type="text" placeholder="Search bookmarks..."
+                            style="background:none;border:none;color:var(--text-primary);outline:none;font-size:0.85rem;width:180px;">
                     </div>
                     <span class="filter-pill active">All Topics</span>
                     <span class="filter-pill">Technology</span>
@@ -543,10 +677,12 @@
                     <div class="user-bookmark-card">
                         <div class="user-bookmark-img">
                             <img src="images/ai_journalism_hero.webp" alt="AI Journalism">
-                            <button class="bookmark-remove-btn" title="Remove bookmark"><i class="fas fa-times"></i></button>
+                            <button class="bookmark-remove-btn" title="Remove bookmark"><i
+                                    class="fas fa-times"></i></button>
                         </div>
                         <div class="user-bookmark-info">
-                            <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;">Technology</span>
+                            <span class="category-tag"
+                                style="font-size:0.65rem;padding:0.15rem 0.5rem;">Technology</span>
                             <h4>The Rise of Artificial Intelligence in Modern Journalism</h4>
                             <p>Elena Vance &bull; June 14, 2026 &bull; 6 min read</p>
                         </div>
@@ -555,10 +691,12 @@
                     <div class="user-bookmark-card">
                         <div class="user-bookmark-img">
                             <img src="images/grade.webp" alt="Markets">
-                            <button class="bookmark-remove-btn" title="Remove bookmark"><i class="fas fa-times"></i></button>
+                            <button class="bookmark-remove-btn" title="Remove bookmark"><i
+                                    class="fas fa-times"></i></button>
                         </div>
                         <div class="user-bookmark-info">
-                            <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#3b82f6;color:#3b82f6;background:rgba(59,130,246,0.1);">Business</span>
+                            <span class="category-tag"
+                                style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#3b82f6;color:#3b82f6;background:rgba(59,130,246,0.1);">Business</span>
                             <h4>Markets Experience Volatility Amid Geopolitical Shifts</h4>
                             <p>Marcus Aurelius &bull; June 13, 2026 &bull; 4 min read</p>
                         </div>
@@ -567,10 +705,12 @@
                     <div class="user-bookmark-card">
                         <div class="user-bookmark-img">
                             <img src="images/ai_soccer_blog.webp" alt="AI Soccer">
-                            <button class="bookmark-remove-btn" title="Remove bookmark"><i class="fas fa-times"></i></button>
+                            <button class="bookmark-remove-btn" title="Remove bookmark"><i
+                                    class="fas fa-times"></i></button>
                         </div>
                         <div class="user-bookmark-info">
-                            <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#10b981;color:#10b981;background:rgba(16,185,129,0.1);">Sports</span>
+                            <span class="category-tag"
+                                style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#10b981;color:#10b981;background:rgba(16,185,129,0.1);">Sports</span>
                             <h4>Artificial Intelligence and Soccer: Future of Sports Analytics</h4>
                             <p>Sarah Jenkins &bull; June 12, 2026 &bull; 5 min read</p>
                         </div>
@@ -579,10 +719,12 @@
                     <div class="user-bookmark-card">
                         <div class="user-bookmark-img">
                             <img src="images/insights1.webp" alt="Quantum">
-                            <button class="bookmark-remove-btn" title="Remove bookmark"><i class="fas fa-times"></i></button>
+                            <button class="bookmark-remove-btn" title="Remove bookmark"><i
+                                    class="fas fa-times"></i></button>
                         </div>
                         <div class="user-bookmark-info">
-                            <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;">Technology</span>
+                            <span class="category-tag"
+                                style="font-size:0.65rem;padding:0.15rem 0.5rem;">Technology</span>
                             <h4>Next-Gen Quantum Computing: Reaching the Milestones</h4>
                             <p>Elena Vance &bull; June 11, 2026 &bull; 7 min read</p>
                         </div>
@@ -591,10 +733,12 @@
                     <div class="user-bookmark-card">
                         <div class="user-bookmark-img">
                             <img src="images/insights2.webp" alt="Architecture">
-                            <button class="bookmark-remove-btn" title="Remove bookmark"><i class="fas fa-times"></i></button>
+                            <button class="bookmark-remove-btn" title="Remove bookmark"><i
+                                    class="fas fa-times"></i></button>
                         </div>
                         <div class="user-bookmark-info">
-                            <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#eab308;color:#eab308;background:rgba(234,179,8,0.1);">Lifestyle</span>
+                            <span class="category-tag"
+                                style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#eab308;color:#eab308;background:rgba(234,179,8,0.1);">Lifestyle</span>
                             <h4>Sustainable Architecture: Redefining Metropolitan Skyscrapers</h4>
                             <p>David Stone &bull; June 10, 2026 &bull; 6 min read</p>
                         </div>
@@ -603,10 +747,12 @@
                     <div class="user-bookmark-card">
                         <div class="user-bookmark-img">
                             <img src="images/insights3.webp" alt="Energy">
-                            <button class="bookmark-remove-btn" title="Remove bookmark"><i class="fas fa-times"></i></button>
+                            <button class="bookmark-remove-btn" title="Remove bookmark"><i
+                                    class="fas fa-times"></i></button>
                         </div>
                         <div class="user-bookmark-info">
-                            <span class="category-tag" style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#a855f7;color:#a855f7;background:rgba(168,85,247,0.1);">Politics</span>
+                            <span class="category-tag"
+                                style="font-size:0.65rem;padding:0.15rem 0.5rem;border-color:#a855f7;color:#a855f7;background:rgba(168,85,247,0.1);">Politics</span>
                             <h4>The Shift in Global Energy: Transitioning to Clean Power Grid</h4>
                             <p>Marcus Aurelius &bull; June 09, 2026 &bull; 4 min read</p>
                         </div>
@@ -621,10 +767,12 @@
                 <div class="dash-section-header-bar">
                     <h2><i class="fas fa-history"></i> Reading History</h2>
                     <div style="display:flex;gap:0.75rem;align-items:center;">
-                        <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#10b981;padding:0.4rem 0.85rem;border-radius:8px;font-size:0.82rem;font-weight:600;display:flex;align-items:center;gap:0.4rem;">
+                        <div
+                            style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#10b981;padding:0.4rem 0.85rem;border-radius:8px;font-size:0.82rem;font-weight:600;display:flex;align-items:center;gap:0.4rem;">
                             <i class="fas fa-stopwatch"></i> 4h 32m this week
                         </div>
-                        <button class="btn btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;" onclick="window.showToast && showToast('History cleared (Simulation)','warning')">
+                        <button class="btn btn-outline" style="padding:0.4rem 1rem;font-size:0.8rem;"
+                            onclick="window.showToast && showToast('History cleared (Simulation)','warning')">
                             <i class="fas fa-trash-alt"></i> Clear History
                         </button>
                     </div>
@@ -632,15 +780,51 @@
 
                 <!-- Weekly reading bar chart -->
                 <div class="dash-chart-section" style="margin-bottom:2rem;">
-                    <h3 class="dash-subtitle" style="margin-bottom:0.5rem;"><i class="fas fa-chart-bar"></i> Reading Activity This Week</h3>
+                    <h3 class="dash-subtitle" style="margin-bottom:0.5rem;"><i class="fas fa-chart-bar"></i> Reading
+                        Activity This Week</h3>
                     <div class="dash-chart-bars" style="height:100px;">
-                        <div class="dash-bar-item"><div class="dash-bar" style="height:30%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));"><span>Mon</span></div><p>12m</p></div>
-                        <div class="dash-bar-item"><div class="dash-bar" style="height:70%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));"><span>Tue</span></div><p>28m</p></div>
-                        <div class="dash-bar-item"><div class="dash-bar" style="height:55%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));"><span>Wed</span></div><p>22m</p></div>
-                        <div class="dash-bar-item"><div class="dash-bar" style="height:90%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));"><span>Thu</span></div><p>36m</p></div>
-                        <div class="dash-bar-item"><div class="dash-bar" style="height:80%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));"><span>Fri</span></div><p>32m</p></div>
-                        <div class="dash-bar-item"><div class="dash-bar" style="height:45%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));"><span>Sat</span></div><p>18m</p></div>
-                        <div class="dash-bar-item"><div class="dash-bar" style="height:60%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));"><span>Sun</span></div><p>24m</p></div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar"
+                                style="height:30%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));">
+                                <span>Mon</span></div>
+                            <p>12m</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar"
+                                style="height:70%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));">
+                                <span>Tue</span></div>
+                            <p>28m</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar"
+                                style="height:55%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));">
+                                <span>Wed</span></div>
+                            <p>22m</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar"
+                                style="height:90%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));">
+                                <span>Thu</span></div>
+                            <p>36m</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar"
+                                style="height:80%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));">
+                                <span>Fri</span></div>
+                            <p>32m</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar"
+                                style="height:45%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));">
+                                <span>Sat</span></div>
+                            <p>18m</p>
+                        </div>
+                        <div class="dash-bar-item">
+                            <div class="dash-bar"
+                                style="height:60%;background:linear-gradient(180deg,#a855f7,rgba(99,102,241,0.6));">
+                                <span>Sun</span></div>
+                            <p>24m</p>
+                        </div>
                     </div>
                 </div>
 
@@ -673,7 +857,8 @@
 
                     <!-- Yesterday -->
                     <div class="history-group" style="margin-top:1.25rem;">
-                        <div class="history-dot" style="border-color:rgba(255,255,255,0.12);color:var(--text-muted);"><i class="fas fa-circle"></i></div>
+                        <div class="history-dot" style="border-color:rgba(255,255,255,0.12);color:var(--text-muted);"><i
+                                class="fas fa-circle"></i></div>
                         <div class="history-group-date">Yesterday — June 16, 2026</div>
                         <div class="history-entry">
                             <div class="history-entry-thumb">
@@ -706,7 +891,8 @@
 
                     <!-- June 15 -->
                     <div class="history-group" style="margin-top:1.25rem;">
-                        <div class="history-dot" style="border-color:rgba(255,255,255,0.1);color:var(--text-muted);"><i class="fas fa-circle"></i></div>
+                        <div class="history-dot" style="border-color:rgba(255,255,255,0.1);color:var(--text-muted);"><i
+                                class="fas fa-circle"></i></div>
                         <div class="history-group-date">June 15, 2026</div>
                         <div class="history-entry">
                             <div class="history-entry-thumb">
@@ -738,7 +924,8 @@
                             <img src="images/Elena Vance.webp" alt="Elena Vance">
                         </div>
                         <h4 style="font-size:1.05rem;font-weight:700;margin-bottom:0.15rem;">Elena Vance</h4>
-                        <p class="author-specialty"><i class="fas fa-microchip" style="color:var(--primary);"></i> Technology & Future</p>
+                        <p class="author-specialty"><i class="fas fa-microchip" style="color:var(--primary);"></i>
+                            Technology & Future</p>
                         <div class="author-latest">
                             <div class="author-latest-label">Latest Article</div>
                             <p>Next-Gen Quantum Computing: Reaching the Milestones</p>
@@ -748,7 +935,8 @@
                             <div><strong>8.2K</strong><span>Followers</span></div>
                             <div><strong>4.9★</strong><span>Rating</span></div>
                         </div>
-                        <button class="btn btn-outline" style="width:100%;padding:0.55rem;border-color:var(--primary);color:var(--primary);margin-top:0.25rem;border-radius:10px;font-weight:700;">
+                        <button class="btn btn-outline"
+                            style="width:100%;padding:0.55rem;border-color:var(--primary);color:var(--primary);margin-top:0.25rem;border-radius:10px;font-weight:700;">
                             <i class="fas fa-check"></i> Following
                         </button>
                     </div>
@@ -759,7 +947,8 @@
                             <img src="images/David Stone.webp" alt="David Stone">
                         </div>
                         <h4 style="font-size:1.05rem;font-weight:700;margin-bottom:0.15rem;">David Stone</h4>
-                        <p class="author-specialty"><i class="fas fa-leaf" style="color:#eab308;"></i> Lifestyle & Architecture</p>
+                        <p class="author-specialty"><i class="fas fa-leaf" style="color:#eab308;"></i> Lifestyle &
+                            Architecture</p>
                         <div class="author-latest">
                             <div class="author-latest-label" style="color:#eab308;">Latest Article</div>
                             <p>Sustainable Architecture: Redefining Metropolitan Skyscrapers</p>
@@ -769,7 +958,8 @@
                             <div><strong>5.1K</strong><span>Followers</span></div>
                             <div><strong>4.7★</strong><span>Rating</span></div>
                         </div>
-                        <button class="btn btn-outline" style="width:100%;padding:0.55rem;border-color:#eab308;color:#eab308;margin-top:0.25rem;border-radius:10px;font-weight:700;">
+                        <button class="btn btn-outline"
+                            style="width:100%;padding:0.55rem;border-color:#eab308;color:#eab308;margin-top:0.25rem;border-radius:10px;font-weight:700;">
                             <i class="fas fa-check"></i> Following
                         </button>
                     </div>
@@ -777,10 +967,11 @@
                     <!-- Marcus Aurelius -->
                     <div class="author-card">
                         <div class="author-avatar">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=120" alt="Marcus Aurelius">
+                            <img src="images/Marcus Aureliu.webp" alt="Marcus Aurelius">
                         </div>
                         <h4 style="font-size:1.05rem;font-weight:700;margin-bottom:0.15rem;">Marcus Aurelius</h4>
-                        <p class="author-specialty"><i class="fas fa-chart-line" style="color:#10b981;"></i> Economics & Politics</p>
+                        <p class="author-specialty"><i class="fas fa-chart-line" style="color:#10b981;"></i> Economics &
+                            Politics</p>
                         <div class="author-latest">
                             <div class="author-latest-label" style="color:#10b981;">Latest Article</div>
                             <p>The Shift in Global Energy: Transitioning to Clean Power Grid</p>
@@ -790,14 +981,18 @@
                             <div><strong>6.7K</strong><span>Followers</span></div>
                             <div><strong>4.8★</strong><span>Rating</span></div>
                         </div>
-                        <button class="btn btn-outline" style="width:100%;padding:0.55rem;border-color:#10b981;color:#10b981;margin-top:0.25rem;border-radius:10px;font-weight:700;">
+                        <button class="btn btn-outline"
+                            style="width:100%;padding:0.55rem;border-color:#10b981;color:#10b981;margin-top:0.25rem;border-radius:10px;font-weight:700;">
                             <i class="fas fa-check"></i> Following
                         </button>
                     </div>
 
                     <!-- Suggest new author card -->
-                    <div class="author-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;border-style:dashed;opacity:0.7;cursor:pointer;" onclick="window.showToast && showToast('Discover authors — coming soon!','info')">
-                        <div style="width:60px;height:60px;border-radius:50%;background:rgba(0,242,255,0.07);border:2px dashed rgba(0,242,255,0.3);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--primary);margin-bottom:1rem;">
+                    <div class="author-card"
+                        style="display:flex;flex-direction:column;align-items:center;justify-content:center;border-style:dashed;opacity:0.7;cursor:pointer;"
+                        onclick="window.showToast && showToast('Discover authors — coming soon!','info')">
+                        <div
+                            style="width:60px;height:60px;border-radius:50%;background:rgba(0,242,255,0.07);border:2px dashed rgba(0,242,255,0.3);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--primary);margin-bottom:1rem;">
                             <i class="fas fa-plus"></i>
                         </div>
                         <h4 style="font-size:1rem;font-weight:700;margin-bottom:0.3rem;">Discover Authors</h4>
@@ -816,15 +1011,19 @@
 
                 <!-- Current plan -->
                 <div class="user-sub-current-card stagger-in" style="--delay:0.1s">
-                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+                    <div
+                        style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
                         <div>
                             <div class="user-sub-badge"><i class="fas fa-gem"></i> Premium Plan — Active</div>
                         </div>
                         <div style="display:flex;gap:0.75rem;">
-                            <button class="btn btn-outline" style="padding:0.45rem 1.1rem;font-size:0.82rem;" onclick="window.showToast && showToast('Manage billing — Coming soon!','info')">
+                            <button class="btn btn-outline" style="padding:0.45rem 1.1rem;font-size:0.82rem;"
+                                onclick="window.showToast && showToast('Manage billing — Coming soon!','info')">
                                 <i class="fas fa-credit-card"></i> Manage Billing
                             </button>
-                            <button class="btn btn-outline" style="padding:0.45rem 1.1rem;font-size:0.82rem;border-color:rgba(239,68,68,0.3);color:#ef4444;" onclick="window.showToast && showToast('Subscription cancelled (Simulation)','error')">
+                            <button class="btn btn-outline"
+                                style="padding:0.45rem 1.1rem;font-size:0.82rem;border-color:rgba(239,68,68,0.3);color:#ef4444;"
+                                onclick="window.showToast && showToast('Subscription cancelled (Simulation)','error')">
                                 <i class="fas fa-times-circle"></i> Cancel Plan
                             </button>
                         </div>
@@ -835,7 +1034,8 @@
                             <div class="user-sub-details">
                                 <div class="user-sub-detail-item">
                                     <span>Status</span>
-                                    <strong style="color:#10b981;display:flex;align-items:center;gap:0.4rem;"><i class="fas fa-check-circle"></i> Active</strong>
+                                    <strong style="color:#10b981;display:flex;align-items:center;gap:0.4rem;"><i
+                                            class="fas fa-check-circle"></i> Active</strong>
                                 </div>
                                 <div class="user-sub-detail-item">
                                     <span>Billing Cycle</span>
@@ -858,27 +1058,61 @@
                         <div class="user-sub-features">
                             <h4>Your Premium Benefits</h4>
                             <ul>
-                                <li class="premium-perk" data-tooltip="Read any published piece without limits"><i class="fas fa-check"></i> Unlimited article access</li>
-                                <li class="premium-perk" data-tooltip="Zero sponsorships or banner advertisements"><i class="fas fa-check"></i> Ad-free reading experience</li>
-                                <li class="premium-perk" data-tooltip="Weekly insights direct from our editors"><i class="fas fa-check"></i> Exclusive editorial insights</li>
-                                <li class="premium-perk" data-tooltip="Watch exclusive Stackly documentaries"><i class="fas fa-check"></i> Early access to documentaries</li>
-                                <li class="premium-perk" data-tooltip="Get breaking alerts before others"><i class="fas fa-check"></i> Priority newsletter delivery</li>
+                                <li class="premium-perk" data-tooltip="Read any published piece without limits"><i
+                                        class="fas fa-check"></i> Unlimited article access</li>
+                                <li class="premium-perk" data-tooltip="Zero sponsorships or banner advertisements"><i
+                                        class="fas fa-check"></i> Ad-free reading experience</li>
+                                <li class="premium-perk" data-tooltip="Weekly insights direct from our editors"><i
+                                        class="fas fa-check"></i> Exclusive editorial insights</li>
+                                <li class="premium-perk" data-tooltip="Watch exclusive Stackly documentaries"><i
+                                        class="fas fa-check"></i> Early access to documentaries</li>
+                                <li class="premium-perk" data-tooltip="Get breaking alerts before others"><i
+                                        class="fas fa-check"></i> Priority newsletter delivery</li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Billing History -->
                     <div style="margin-top:2rem;">
-                        <h4 style="font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.05);">Billing History</h4>
+                        <h4
+                            style="font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.05);">
+                            Billing History</h4>
                         <div class="dash-table-scroll">
                             <table class="dash-table" style="font-size:0.83rem;">
                                 <thead>
-                                    <tr><th>Date</th><th>Plan</th><th>Amount</th><th>Status</th><th>Receipt</th></tr>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Plan</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Receipt</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <tr><td>Jun 14, 2026</td><td>Premium (Monthly)</td><td>$9.00</td><td><span class="dash-status-badge published">Paid</span></td><td><a href="#" style="color:var(--primary);font-size:0.8rem;"><i class="fas fa-download"></i></a></td></tr>
-                                    <tr><td>May 14, 2026</td><td>Premium (Monthly)</td><td>$9.00</td><td><span class="dash-status-badge published">Paid</span></td><td><a href="#" style="color:var(--primary);font-size:0.8rem;"><i class="fas fa-download"></i></a></td></tr>
-                                    <tr><td>Apr 14, 2026</td><td>Premium (Monthly)</td><td>$9.00</td><td><span class="dash-status-badge published">Paid</span></td><td><a href="#" style="color:var(--primary);font-size:0.8rem;"><i class="fas fa-download"></i></a></td></tr>
+                                    <tr>
+                                        <td>Jun 14, 2026</td>
+                                        <td>Premium (Monthly)</td>
+                                        <td>$9.00</td>
+                                        <td><span class="dash-status-badge published">Paid</span></td>
+                                        <td><a href="#" style="color:var(--primary);font-size:0.8rem;"><i
+                                                    class="fas fa-download"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>May 14, 2026</td>
+                                        <td>Premium (Monthly)</td>
+                                        <td>$9.00</td>
+                                        <td><span class="dash-status-badge published">Paid</span></td>
+                                        <td><a href="#" style="color:var(--primary);font-size:0.8rem;"><i
+                                                    class="fas fa-download"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apr 14, 2026</td>
+                                        <td>Premium (Monthly)</td>
+                                        <td>$9.00</td>
+                                        <td><span class="dash-status-badge published">Paid</span></td>
+                                        <td><a href="#" style="color:var(--primary);font-size:0.8rem;"><i
+                                                    class="fas fa-download"></i></a></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -886,7 +1120,8 @@
                 </div>
 
                 <!-- Upgrade / Compare Plans -->
-                <h3 class="dash-subtitle" style="margin-top:2.5rem;"><i class="fas fa-layer-group"></i> Compare Plans</h3>
+                <h3 class="dash-subtitle" style="margin-top:2.5rem;"><i class="fas fa-layer-group"></i> Compare Plans
+                </h3>
 
                 <!-- Toggle -->
                 <div class="sub-plan-toggle-container">
@@ -925,7 +1160,8 @@
                             <li><i class="fas fa-check"></i> Exclusive insights</li>
                             <li><i class="fas fa-check"></i> Early access to docs</li>
                         </ul>
-                        <button class="btn btn-primary" style="width:100%;padding:0.65rem;" disabled>Your Current Plan</button>
+                        <button class="btn btn-primary" style="width:100%;padding:0.65rem;" disabled>Your Current
+                            Plan</button>
                     </div>
 
                     <!-- Pro -->
@@ -939,7 +1175,9 @@
                             <li><i class="fas fa-check"></i> API access</li>
                             <li><i class="fas fa-check"></i> Dedicated support</li>
                         </ul>
-                        <button class="btn btn-outline" style="width:100%;padding:0.65rem;border-color:#f59e0b;color:#f59e0b;" onclick="window.showToast && showToast('Pro upgrade — coming soon!','info')">
+                        <button class="btn btn-outline"
+                            style="width:100%;padding:0.65rem;border-color:#f59e0b;color:#f59e0b;"
+                            onclick="window.showToast && showToast('Pro upgrade — coming soon!','info')">
                             Upgrade to Pro
                         </button>
                     </div>
@@ -952,7 +1190,8 @@
             <section class="dash-section" id="section-settings">
                 <div class="dash-section-header-bar">
                     <h2><i class="fas fa-cog"></i> Profile Settings</h2>
-                    <button class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.88rem;" onclick="window.showToast && showToast('Settings saved!','success')">
+                    <button class="btn btn-primary" style="padding:0.5rem 1.25rem;font-size:0.88rem;"
+                        onclick="window.showToast && showToast('Settings saved!','success')">
                         <i class="fas fa-save"></i> Save All
                     </button>
                 </div>
@@ -972,13 +1211,17 @@
                             </div>
                             <div class="form-group" style="margin-bottom:1rem;">
                                 <label>Location</label>
-                                <input type="text" class="form-control" placeholder="City, Country" value="New York, USA">
+                                <input type="text" class="form-control" placeholder="City, Country"
+                                    value="New York, USA">
                             </div>
                             <div class="form-group" style="margin-bottom:1.25rem;">
                                 <label>Bio</label>
-                                <textarea class="form-control" rows="2" placeholder="Tell us about yourself...">Avid reader & tech enthusiast. I love following global markets and AI trends.</textarea>
+                                <textarea class="form-control" rows="2"
+                                    placeholder="Tell us about yourself...">Avid reader & tech enthusiast. I love following global markets and AI trends.</textarea>
                             </div>
-                            <button class="btn btn-primary" style="padding:0.5rem 1.5rem;" onclick="window.showToast && showToast('Profile saved!','success')">Save Changes</button>
+                            <button class="btn btn-primary" style="padding:0.5rem 1.5rem;"
+                                onclick="window.showToast && showToast('Profile saved!','success')">Save
+                                Changes</button>
                         </div>
                     </div>
 
@@ -986,7 +1229,8 @@
                         <h4><i class="fas fa-bell"></i> Notification Preferences</h4>
                         <div class="dash-toggle-list">
                             <label class="dash-toggle-item">
-                                <span><i class="fas fa-envelope" style="color:var(--primary);"></i> Daily news briefing email</span>
+                                <span><i class="fas fa-envelope" style="color:var(--primary);"></i> Daily news briefing
+                                    email</span>
                                 <input type="checkbox" checked>
                                 <span class="dash-toggle-slider"></span>
                             </label>
@@ -996,12 +1240,14 @@
                                 <span class="dash-toggle-slider"></span>
                             </label>
                             <label class="dash-toggle-item">
-                                <span><i class="fas fa-newspaper" style="color:#10b981;"></i> Weekly digest newsletter</span>
+                                <span><i class="fas fa-newspaper" style="color:#10b981;"></i> Weekly digest
+                                    newsletter</span>
                                 <input type="checkbox" checked>
                                 <span class="dash-toggle-slider"></span>
                             </label>
                             <label class="dash-toggle-item">
-                                <span><i class="fas fa-star" style="color:#f59e0b;"></i> Personalized recommendations</span>
+                                <span><i class="fas fa-star" style="color:#f59e0b;"></i> Personalized
+                                    recommendations</span>
                                 <input type="checkbox">
                                 <span class="dash-toggle-slider"></span>
                             </label>
@@ -1015,17 +1261,20 @@
                         <h4><i class="fas fa-user-shield"></i> Privacy Settings</h4>
                         <div class="dash-toggle-list">
                             <label class="dash-toggle-item">
-                                <span><i class="fas fa-globe" style="color:var(--primary);"></i> Make my profile public</span>
+                                <span><i class="fas fa-globe" style="color:var(--primary);"></i> Make my profile
+                                    public</span>
                                 <input type="checkbox">
                                 <span class="dash-toggle-slider"></span>
                             </label>
                             <label class="dash-toggle-item">
-                                <span><i class="fas fa-chart-bar" style="color:#a855f7;"></i> Show reading activity</span>
+                                <span><i class="fas fa-chart-bar" style="color:#a855f7;"></i> Show reading
+                                    activity</span>
                                 <input type="checkbox">
                                 <span class="dash-toggle-slider"></span>
                             </label>
                             <label class="dash-toggle-item">
-                                <span><i class="fas fa-robot" style="color:#10b981;"></i> Allow targeted recommendations</span>
+                                <span><i class="fas fa-robot" style="color:#10b981;"></i> Allow targeted
+                                    recommendations</span>
                                 <input type="checkbox" checked>
                                 <span class="dash-toggle-slider"></span>
                             </label>
@@ -1042,7 +1291,8 @@
                         <div class="dash-settings-form">
                             <div class="form-group" style="margin-bottom:1rem;">
                                 <label>Default Reading Theme</label>
-                                <select class="form-control" style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;color:var(--text-primary);outline:none;border-right:12px solid transparent;">
+                                <select class="form-control"
+                                    style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;color:var(--text-primary);outline:none;border-right:12px solid transparent;">
                                     <option>System Default</option>
                                     <option>Dark Mode</option>
                                     <option>Light Mode</option>
@@ -1052,13 +1302,16 @@
                             <div class="form-group" style="margin-bottom:1rem;">
                                 <label>Article Font Size</label>
                                 <div style="display:flex;gap:1rem;align-items:center;">
-                                    <input type="range" min="1" max="3" value="2" style="flex:1;accent-color:var(--primary);">
-                                    <span style="font-size:1rem;font-weight:800;color:var(--primary);min-width:24px;">Aa</span>
+                                    <input type="range" min="1" max="3" value="2"
+                                        style="flex:1;accent-color:var(--primary);">
+                                    <span
+                                        style="font-size:1rem;font-weight:800;color:var(--primary);min-width:24px;">Aa</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>Default Language</label>
-                                <select class="form-control" style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;color:var(--text-primary);outline:none;border-right:12px solid transparent;">
+                                <select class="form-control"
+                                    style="width:100%;padding:0.8rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;color:var(--text-primary);outline:none;border-right:12px solid transparent;">
                                     <option>English (US)</option>
                                     <option>English (UK)</option>
                                     <option>Spanish</option>
@@ -1076,4 +1329,5 @@
     <script src="js/script.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
+
 </html>
