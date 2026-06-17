@@ -53,17 +53,45 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth < 992) {
                 const sidebar = document.getElementById('dash-sidebar');
                 if (sidebar) sidebar.classList.remove('open');
+                const overlay = document.querySelector('.dash-sidebar-overlay');
+                if (overlay) overlay.classList.remove('active');
             }
         });
     });
 
-    // 3. Mobile Sidebar Toggle
+    // 3. Mobile Sidebar Toggle & Overlay
     const menuToggleBtn = document.getElementById('dash-menu-toggle');
     const sidebar = document.getElementById('dash-sidebar');
 
     if (menuToggleBtn && sidebar) {
+        // Create overlay dynamically
+        let overlay = document.querySelector('.dash-sidebar-overlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'dash-sidebar-overlay';
+            document.body.appendChild(overlay);
+        }
+
         menuToggleBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('open');
+            const isOpen = sidebar.classList.toggle('open');
+            if (isOpen) {
+                overlay.classList.add('active');
+            } else {
+                overlay.classList.remove('active');
+            }
+        });
+
+        // Close button handling
+        const closeBtn = document.getElementById('dash-sidebar-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        }
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
         });
     }
 
@@ -457,5 +485,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 12000);
     }
+
+    // 14. Topbar Avatar Click -> Settings Section Redirect
+    const topbarAvatars = document.querySelectorAll('.topbar-avatar');
+    topbarAvatars.forEach(avatar => {
+        avatar.style.cursor = 'pointer';
+        avatar.addEventListener('click', (e) => {
+            e.preventDefault();
+            const settingsNavItem = document.querySelector('.dash-nav-item[data-section="settings"]');
+            if (settingsNavItem) {
+                settingsNavItem.click();
+            }
+        });
+    });
 });
 

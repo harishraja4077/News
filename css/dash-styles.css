@@ -2000,6 +2000,193 @@ body.light-mode .user-sub-detail-item { background: rgba(0,0,0,0.03); }
     box-shadow: 0 4px 14px rgba(0,242,255,0.15);
 }
 
+/* Topbar Logo and Sidebar Overlay */
+.topbar-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    margin-left: 0.25rem;
+}
+
+.topbar-logo img {
+    height: 28px;
+    width: auto;
+}
+
+.dash-sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 9, 15, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 95;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dash-sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (min-width: 993px) {
+    .topbar-logo {
+        display: none;
+    }
+    .dash-sidebar-close {
+        display: none !important;
+    }
+}
+
+/* ─── Mobile Sidebar Nav Sections ───────────────────────────────────────── */
+@media (max-width: 992px) {
+    .dash-sidebar.open {
+        overflow-y: auto;
+    }
+
+    .dash-nav {
+        padding: 1rem 0.75rem !important;
+        gap: 0.3rem !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow-y: auto !important;
+    }
+
+    .dash-nav-item {
+        display: flex !important;
+        align-items: center !important;
+        gap: 0.85rem !important;
+        padding: 0.9rem 1rem !important;
+        font-size: 0.92rem !important;
+        border-radius: 10px !important;
+        min-height: 46px !important;
+        color: #cbd5e1 !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        border: 1px solid rgba(255, 255, 255, 0.04) !important;
+        transition: all 0.25s ease !important;
+    }
+
+    .dash-nav-item:hover {
+        background: rgba(255, 255, 255, 0.07) !important;
+        color: #f1f5f9 !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+
+    .dash-nav-item.active {
+        background: linear-gradient(135deg, rgba(0, 242, 255, 0.15), rgba(0, 98, 255, 0.08)) !important;
+        color: var(--primary) !important;
+        border: 1px solid rgba(0, 242, 255, 0.2) !important;
+    }
+
+    .dash-nav-item.active i {
+        color: var(--primary) !important;
+    }
+
+    .dash-nav-item span {
+        display: inline !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .dash-nav-item i {
+        font-size: 1rem !important;
+        width: 22px !important;
+        text-align: center !important;
+        color: #94a3b8 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .dash-nav-item .nav-badge {
+        display: inline-flex !important;
+        margin-left: auto !important;
+    }
+
+    .dash-sidebar-header {
+        padding: 1.25rem 1rem;
+    }
+
+    .dash-sidebar-close {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.25s ease;
+        font-size: 1rem;
+        flex-shrink: 0;
+    }
+
+    .dash-sidebar-close:hover {
+        background: rgba(239, 68, 68, 0.15);
+        border-color: rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+        transform: rotate(90deg);
+    }
+
+    body.light-mode .dash-sidebar-close {
+        background: rgba(0, 0, 0, 0.04);
+        border-color: rgba(0, 0, 0, 0.08);
+        color: #64748b;
+    }
+
+    body.light-mode .dash-sidebar-close:hover {
+        background: rgba(239, 68, 68, 0.1);
+        border-color: rgba(239, 68, 68, 0.25);
+        color: #ef4444;
+    }
+
+    body.light-mode .dash-nav-item {
+        color: #475569 !important;
+        background: rgba(0, 0, 0, 0.02) !important;
+        border-color: rgba(0, 0, 0, 0.04) !important;
+    }
+
+    body.light-mode .dash-nav-item:hover {
+        background: rgba(0, 0, 0, 0.05) !important;
+        color: #1e293b !important;
+    }
+
+    body.light-mode .dash-nav-item.active {
+        background: rgba(2, 132, 199, 0.08) !important;
+        color: var(--primary) !important;
+        border-color: rgba(2, 132, 199, 0.2) !important;
+    }
+
+    body.light-mode .dash-nav-item i {
+        color: #64748b !important;
+    }
+
+    body.light-mode .dash-nav-item.active i {
+        color: var(--primary) !important;
+    }
+
+    .dash-sidebar-footer {
+        padding: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .dash-nav-label {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        color: #64748b !important;
+        font-size: 0.65rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.2px !important;
+        text-transform: uppercase !important;
+        padding: 0.5rem 1rem 0.25rem !important;
+    }
+}
+
 /* ─── Responsive ────────────────────────────────────────────────────────── */
 .dash-menu-toggle { display: none; }
 
@@ -2074,4 +2261,47 @@ body.light-mode .user-sub-detail-item { background: rgba(0,0,0,0.03); }
 /* ─── Section Entrance ──────────────────────────────────────────────────── */
 .dash-section.active {
     animation: fadeInUp 0.45s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+
+/* Mobile responsive section layout overrides */
+@media (max-width: 576px) {
+    .dash-section {
+        padding: 1.25rem 1rem !important;
+    }
+    .dash-table-wrap {
+        padding: 1rem 0.75rem !important;
+    }
+    .dash-stat-card {
+        padding: 1.25rem 1rem !important;
+    }
+    .dash-settings-card {
+        padding: 1.25rem 1rem !important;
+    }
+    .user-sub-current-card {
+        padding: 1.25rem 1rem !important;
+    }
+    .dash-page-title {
+        display: none !important;
+    }
+    .topbar-btn .btn-text {
+        display: none !important;
+    }
+    .topbar-btn {
+        width: 36px !important;
+        height: 36px !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .topbar-btn i {
+        margin: 0 !important;
+    }
+    .dash-topbar-left {
+        gap: 0.5rem !important;
+    }
+    .dash-topbar {
+        padding: 0 1rem !important;
+    }
 }

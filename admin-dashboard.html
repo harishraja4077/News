@@ -340,11 +340,12 @@
                 <a href="index.html" class="logo">
                     <img src="images/logo.webp" alt="Stackly Logo">
                 </a>
-                <span class="dash-role-badge admin-badge"><i class="fas fa-shield-halved"></i> Admin</span>
+                <span class="dash-role-badge admin-badge"><i class="fas fa-user-shield"></i>Admin</span>
+                <button id="dash-sidebar-close" class="btn btn-icon dash-sidebar-close" aria-label="Close Sidebar"><i class="fas fa-times"></i></button>
             </div>
 
             <nav class="dash-nav">
-
+                <span class="dash-nav-label">Menu</span>
                 <a href="#" class="dash-nav-item active" data-section="overview">
                     <i class="fas fa-th-large"></i> <span>Overview</span>
                 </a>
@@ -395,6 +396,9 @@
                     <button class="btn btn-icon dash-menu-toggle" id="dash-menu-toggle">
                         <i class="fas fa-bars"></i>
                     </button>
+                    <a href="index.html" class="topbar-logo">
+                        <img src="images/logo.webp" alt="Stackly Logo">
+                    </a>
                     <h1 class="dash-page-title">Admin Dashboard</h1>
                     <span class="topbar-date" id="topbar-date"></span>
                 </div>
@@ -415,9 +419,9 @@
                     <div class="topbar-avatar" title="Admin Profile">
                         <i class="fas fa-user-shield"></i>
                     </div>
-                    <a href="index.html" class="btn btn-outline"
+                    <a href="index.html" class="btn btn-outline topbar-btn"
                         style="padding:0.42rem 1rem;font-size:0.82rem;display:flex;align-items:center;gap:0.4rem;">
-                        <i class="fas fa-globe"></i> View Site
+                        <i class="fas fa-globe"></i> <span class="btn-text">View Site</span>
                     </a>
                 </div>
             </div>
